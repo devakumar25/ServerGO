@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/devakumar/Downloads/apache-tomcat-8.5.85/webapps/testProject/WEB-INF/lib/javax.servlet-api-4.0.1.jar",
+        "/home/devakumar/Downloads/apache-tomcat-8.5.85/webapps/testProject/WEB-INF/lib/json-simple-1.1.jar",
+        "/home/devakumar/Downloads/apache-tomcat-8.5.85/webapps/testProject/WEB-INF/lib/mysql-connector-j-8.0.31.jar",
+        "/home/devakumar/Downloads/apache-tomcat-8.5.85/webapps/testProject/WEB-INF/lib/websocket-api.jar",
+        "WEB-INF/lib/javax.mail.jar",
+        "WEB-INF/lib/activation.jar",
+        "WEB-INF/lib/javax.mail (1).jar",
+        "WEB-INF/lib/JSON.jar"
+    ]
+}

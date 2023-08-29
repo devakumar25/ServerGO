@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap' rel='stylesheet'>
+</head>
+<style>
+  /*=============== GOOGLE FONTS ===============*/
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+  /*=============== VARIABLES ===============*/
+
+  :root {
+    --background: #292C4A;
+    --background-dark: #272944;
+    --foreground: rgb(255, 255, 255);
+    --accent-color: rgb(216, 191, 228);
+
+    --nav-width-collapsed: 80px;
+    --nav-width: 350px;
+    --main-padding: 20px;
+  }
+
+  /*=============== BASE ===============*/
+
+  * {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--foreground);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+  }
+
+  main {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: var(--main-padding);
+    padding-left: calc(var(--nav-width-collapsed) + var(--main-padding));
+  }
+
+  /*=============== NAVBAR ===============*/
+
+  .menu-icon {
+    width: 30px;
+    margin: 25px;
+    transition: all 1s ease;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background: #181a2ee1;
+    backdrop-filter: blur(5px);
+    width: var(--nav-width-collapsed);
+    overflow: hidden;
+    transition: all 1s ease;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 15px 15px 0;
+  }
+
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  nav li {
+    position: relative;
+    display: block;
+  }
+
+  .nav-link {
+    position: relative;
+    font-size: 16px;
+    display: table;
+    width: var(--nav-width);
+    padding: 10px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    opacity: 0%;
+  }
+
+  .nav-header {
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+    width: var(--nav-width);
+    transition: all 0.5s ease;
+    opacity: 0%;
+  }
+
+  nav:hover {
+    width: var(--nav-width);
+    overflow-y: auto;
+    transition: all 0.5s ease;
+  }
+
+  nav:hover .nav-link {
+    opacity: 100%;
+    transition: opacity 1s ease;
+  }
+
+  nav:hover .nav-header {
+    opacity: 100%;
+    transition: opacity 1s ease;
+  }
+
+  nav:hover .menu-icon {
+    transform: rotate(90deg);
+    transition: all 1s ease;
+  }
+
+  nav a:hover {
+    border-left-style: solid;
+    border-width: 4px;
+    border-left-color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .nav-item {
+    position: relative;
+    margin-left: 12px;
+  }
+
+  /*=============== ARTICLES ===============*/
+
+  header {
+    font-size: 2em;
+    font-weight: 600;
+    margin-top: 2em;
+  }
+
+  article {
+    font-size: 16px;
+    line-height: 2;
+  }
+
+  /*=============== CODE SECTIONS ===============*/
+
+  code {
+    background: #181a2e88;
+    border-radius: 5px;
+    color: var(--accent-color);
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  /*=============== SCROLLBAR ===============*/
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: var(--background-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+  }
+
+  /*=============== MEDIA QUERY ===============*/
+
+  @media print {
+    nav {
+      display: none;
+    }
+
+    * {
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+
+    main {
+      padding-left: 0 !important;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    /* For mobile phones: */
+    nav {
+      width: 60px;
+    }
+
+    .menu-icon {
+      width: 35px;
+      margin: 15px;
+      transition: all 1s ease;
+    }
+
+    main {
+      padding-left: calc(60px + var(--main-padding));
+    }
+  }
+
+  .main-section img {
+    width: 100%;
+    height: 600px;
+    margin: auto;
+    
+
+  }
+</style>
+
+<body>
+  <main id="main-doc">
+    <!--=============== NAVBAR ===============-->
+    <nav id="navbar">
+      <img src="https://www.freeiconspng.com/uploads/white-arrow-transparent-png-22.png" class="menu-icon" alt="">
+      <header class="nav-header">ServerGO Documentation</header>
+      <ul>
+        <li>
+          <a class="nav-link" href="#Introduction">
+            <span class="nav-item">Introduction</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#What_you_should_already_know">
+            <span class="nav-item">Key Features</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Hello_world">
+            <span class="nav-item">Encryption SHA-256</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Variables">
+            <span class="nav-item">Lyra Chatbot(OpenAI Integration)</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Global_variables">
+            <span class="nav-item">Getting Started</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Constants">
+            <span class="nav-item">Best Practices</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#method">
+            <span class="nav-item">Methods Used</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#datamodel">
+            <span class="nav-item">Data Modelling</span>
+          </a>
+        </li>
+        <li>
+            <a class="nav-link" href="#ZA">
+              <span class="nav-item">Report-Zoho Analytics</span>
+            </a>
+          </li>
+        <li>
+          <a class="nav-link" href="#if...else_statement">
+            <span class="nav-item">Conclusion</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="#Reference">
+            <span class="nav-item">Reference</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--=============== ARTICLES ===============-->
+
+    <!--=============== Introduction ===============-->
+
+    <section class="main-section" id="Introduction">
+      <header>1. Introduction</header>
+      <article>
+        <p>
+          Welcome to ServerGO! This documentation provides an overview of our server inventory management system and
+          guides you on how to effectively utilize its features. ServerGO is designed to automate the allocation and
+          management of server resources, making it easier for administrators to fulfill user requests. Let's get
+          started!
+        </p>
+        <p>
+          ServerGO is a server inventory management system that enables administrators to efficiently allocate server
+          resources to users. It automates the allocation process, tracks inventory levels, and manages pending requests
+          when stock is low. With ServerGO, you can streamline the server provisioning workflow, ensuring efficient
+          resource utilization.
+        <ul>
+          <li>
+            ServerGO empowers organizations with an intuitive server inventory management solution that eliminates the
+            complexities of manual resource allocation. By automating the server provisioning process, ServerGO saves
+            valuable time and resources, allowing administrators to focus on strategic tasks.
+          </li>
+          <li>
+            Designed with scalability in mind, ServerGO caters to businesses of all sizes, from small startups to large
+            enterprises. Its flexible architecture allows for seamless integration with existing infrastructure and
+            provisioning workflows, ensuring a smooth transition and minimal disruptions. Whether you have a handful of
+            servers or a vast network, ServerGO adapts to your needs, simplifying the management of server inventory and
+            streamlining the allocation process.
+          </li>
+        </ul>
+        </p>
+      </article>
+    </section>
+
+    <!--=============== What you should already know ===============-->
+
+    <section class="main-section" id="What_you_should_already_know">
+      <header>2. KEY FEATURES</header>
+      <article>
+        <p>
+          As it has many key features which are needed for a Inventory Allocation, They are as follows:
+
+        </p>
+      </article>
+    </section>
+
+    <!--=============== JavaScript and Java ===============-->
+
+    <section class="main-section" id="JavaScript_and_Java">
+      <h2>2. 1 User Request Management</h2>
+      <article>
+        <p>
+          ServerGO allows users to request server resources from the superadmin. These requests can be submitted through
+          a user-friendly interface.
+        </p>
+
+      </article>
+    </section>
+    <section class="main-section">
+      <h2>2. 2 Automatic Allocation: </h2>
+      <article>
+        <p>
+          When a user makes a request, ServerGO automatically allocates available servers that match the requested
+          specifications. It assigns the server to the user and updates the inventory accordingly.
+        </p>
+
+      </article>
+    </section>
+
+    <section class="main-section">
+      <h2>2. 3 Inventory Tracking</h2>
+      <article>
+        <p>
+          ServerGO keeps track of server inventory, including the number of available servers, their specifications, and
+          allocation status. It provides real-time information about the current stock levels.
+        </p>
+
+      </article>
+      <img
+        src="Inven.png">
+
+    </section>
+
+
+    <section class="main-section">
+      <h2>2. 4 Pending Request </h2>
+      <article>
+        <p>
+          If the inventory is low or insufficient to fulfill a user's request, ServerGO puts the request in a pending
+          state. It keeps track of pending requests and automatically allocates servers when the stock is replenished.
+        </p>
+
+      </article>
+    </section>
+
+    <section class="main-section">
+      <h2>2. 5 Notification </h2>
+      <article>
+        <p>
+          ServerGO sends notifications to both users and administrators regarding the status of their requests. Users
+          receive updates when their requests are fulfilled, and administrators are notified when stock is low or
+          replenished.
+        </p>
+
+      </article>
+      <img
+        src="Noti.png">
+
+    </section>
+    </section>
+
+
+    <!--=============== Hello world ===============-->
+
+    <section class="main-section" id="Hello_world">
+      <header>3. Password Encryption (SHA-256):</header>
+      <article>
+        <p>
+          ServerGO utilizes the SHA-256 (Secure Hash Algorithm 256-bit) cryptographic hash function for encrypting user
+          passwords. SHA-256 is a one-way encryption algorithm, meaning that once a password is encrypted, it cannot be
+          reverse-engineered or decrypted to obtain the original password. By encrypting passwords using SHA-256,
+          ServerGO adds an additional layer of security to prevent unauthorized access to user accounts and sensitive
+          information.
+        </p>
+        <code>
+    public static String encryptPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");  
+
+        byte[] hash = messageDigest.digest(password.getBytes()); // Hash the password using SHA-256
+
+        StringBuilder hexString = new StringBuilder(); // Convert the hash to a hexadecimal string
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    }
+  </code>
+        <p>
+          Select the code in the pad and hit Ctrl+R to watch it unfold in your browser!
+        </p>
+      </article>
+    </section>
+
+    <!--=============== Variables ===============-->
+
+    <section class="main-section" id="Variables">
+      <header>4. Lyra Chatbot (OpenAI Integration)</header>
+      <article>
+        <p>
+          ServerGO is equipped with an intelligent chatbot named Lyra, which enhances the user experience and provides
+          additional support. Lyra is designed to assist users in navigating the server request process and addressing
+          their queries. Here are some specifications of Lyra:
+        </p>
+
+      </article>
+    </section>
+
+    <!--=============== Declaring variables ===============-->
+
+    <section class="main-section">
+      <h2>4. 1Natural Language Processing (NLP):</h2>
+      <article>
+        <p>
+          Lyra utilizes advanced NLP techniques to understand and interpret user queries and requests, allowing for more
+          conversational interactions.
+        </p>
+
+      </article>
+    </section>
+
+    <!--=============== Variable scope ===============-->
+
+    <section class="main-section" id="Variable_scope">
+      <h2>4. 2Knowledge Base Integration</h2>
+      <article>
+        <p>
+          Lyra is integrated with ServerGO's knowledge base, enabling it to provide accurate and up-to-date information
+          about server availability, allocation status, and other relevant details.
+          Lyra offers a frequently asked questions (FAQ) module, where users can find answers to common queries related
+          to server allocation, inventory management, and other aspects of ServerGO.
+        </p>
+        <code>
+      public static String ask(String text) throws Exception {
+        String url = "https://api.openai.com/v1/completions";
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("Authorization", YOUR_API_KEY);
+
+        JSONObject data = new JSONObject();
+        data.put("model", "text-davinci-003");
+        data.put("prompt",text);
+        data.put("max_tokens", 2000);
+        data.put("temperature", 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -> a + b).get();
+
+        return (new JSONObject(output).getJSONArray("choices").getJSONObject(0).getString("text").toString());
+    }
+</code>
+      </article>
+      <img
+        src="ChatBot.png">
+    </section>
+
+    <!--=============== Global variables ===============-->
+
+    <section class="main-section" id="Global_variables">
+      <header>5. Getting Started</header>
+      <article>
+        <p>
+          5.1 User Registration: Users need to register an account with ServerGO to access the system. Provide necessary
+          user information and create login credentials.
+        </p>
+
+        <p>
+          5.2 Requesting Servers: Once logged in, users can submit server requests through the user interface. Specify
+          the required server specifications, such as CPU, RAM, storage, and any other relevant parameters.
+        </p>
+        <p>
+          5.3 Automatic Allocation: ServerGO will automatically allocate available servers that match the requested
+          specifications. Users will receive a notification once their requests are fulfilled.
+        </p>
+        <p>
+          5.4 Pending Requests: If there are insufficient servers to fulfill a user's request, ServerGO will put the
+          request in a pending state. The system will automatically allocate servers when stock is replenished.
+
+
+        </p>
+        <p>
+          5.5 Monitoring Inventory: Administrators can monitor server inventory levels through the ServerGO admin panel.
+          They can view available servers, pending requests, and other relevant information.
+        </p>
+      </article>
+    </section>
+
+    <!--=============== Constants ===============-->
+
+    <section class="main-section" id="Constants">
+      <header>6. Best Practices</header>
+      <article>
+        <p>
+          Here are some best practices to maximize the benefits of ServerGO:
+        </p>
+      </article>
+    </section>
+
+    <!--=============== Data types ===============-->
+
+    <section class="main-section" id="Data_types">
+      <h2>6.1 Regularly Monitor Inventory </h2>
+      <article>
+        <p>Keep an eye on server inventory levels to ensure timely replenishment and avoid prolonged pending requests.
+        </p>
+
+      </article>
+    </section>
+    <section class="main-section" id="Data_types">
+      <h2>6.2 Optimize Resource Allocation: </h2>
+      <article>
+        <p>Configure ServerGO's allocation algorithms based on your organization's priorities and server utilization
+          patterns. This will help in efficient resource allocation.</p>
+
+      </article>
+    </section>
+    <section class="main-section" id="Data_types">
+      <h2>6.3 Streamline Replenishment Process: </h2>
+      <article>
+        <p>Set up automated systems or alerts to notify administrators when server stock reaches a predefined threshold.
+          This will facilitate prompt replenishment.</p>
+
+      </article>
+    </section>
+    <section class="main-section" id="Data_types">
+      <h2>6.4 Gather User Feedback: </h2>
+      <article>
+        <p>Continuously gather feedback from users to improve ServerGO's functionality and user experience. Consider
+          implementing user-requested features to enhance the system.</p>
+
+      </article>
+    </section>
+    <section class="main-section" id="method">
+      <header>
+        7. Methods Used
+      </header>
+      <article>
+        <p>
+          ServerGO utilizes Java methods extensively to implement its functionality and ensure efficient server
+          inventory management. Java methods serve as building blocks for different operations within the system.
+          Methods are used to handle user requests, allocate servers based on specified criteria, update inventory
+          status, and generate notifications. They encapsulate specific tasks and logic, promoting modularity and code
+          reusability. Java methods in ServerGO are designed to handle server allocation algorithms, password
+          encryption, inventory tracking, and communication with external systems. By leveraging the power of Java
+          methods, ServerGO achieves a robust and scalable architecture, allowing for easy maintenance, extensibility,
+          and reliable server provisioning processes.
+        </p>
+        <code>
+1. getConnection()          -->  For Connecting Database
+
+2. save(a,b,c)              -->  For Saving Name,Password,Mail in DB 
+
+        Parameter a(String) = Name;
+        Parameter b(String) = Mail;
+        Parameter c(String) = Password;
+
+3. signInValidation(a,b)     -->  For checking Login Details
+
+        Parameter a(String) = Mail;
+        Parameter b(String) = Password;
+
+4. planInserting(a)          -->  For Inserting Request in DB
+
+        Parameter a = JsonObject containing of all the details
+
+5. requestSuperAdmin()       -->  For creating a RestAPI of Request Information
+
+        No Parameter
+
+6. approveRecord(JB),
+   denyRecord(JB),
+   pendingRecord(JB),
+   blockRecord(JB)           -->  These Methods performs editing the DB based on
+                                  Super Admin decision
+
+        Parameter JB = JsonObject containg of details
+
+7. demandServer(),
+   remainingServer(),
+   approvedCount()           -->   These methods provide RestAPI for giving information for 
+                                   Super Admin
+
+        No Parameter       
+        
+8. ask(a)                    -->    This method Connects with OpenAI  by API LINK,
+                                    send request and gets response for Lyra Responses
+
+        Parameter a(String)  = Request                            
+
+9. encryptPassword(a)        -->     Encrypt Password based on SHA-256
+
+        Parameter a(String)  = Actual Password
+  
+        </code>
+      </article>
+    </section>
+    <section class="main-section" id="datamodel">
+      <header>8. Data Modelling</header>
+      <article>
+        <p>
+          Data modeling in ServerGO plays a crucial role in organizing and structuring the information related to server
+          inventory and allocation. The data model represents the entities and their relationships, providing a
+          foundation for the efficient storage and retrieval of data. In ServerGO, the data model encompasses entities
+          such as servers, users, requests, and inventory status. The server entity includes attributes like CPU, RAM,
+          and storage capacity, while the user entity stores user information such as name and contact details. The
+          request entity captures details of user requests, including the requested server specifications and status.
+          The inventory status entity tracks the availability and allocation status of servers. By carefully designing
+          and implementing the data model, ServerGO ensures accurate and reliable data storage, enabling smooth server
+          allocation and seamless inventory management.
+
+
+
+
+
+
+
+        </p>
+        <img
+          src="DM.png">
+    </section>
+    </article>
+
+    </section>
+    <!--=============== Data types ===============-->
+    <section class="main-section" id="ZA">
+        <header>9.Report(Zoho Analytics Integration)</header>
+        <article>
+            <p>
+                ServerGO leverages the power of Zoho Analytics for comprehensive data analysis and reporting. The integration with Zoho Analytics allows ServerGO to generate insightful reports and visualizations based on server inventory and allocation data. By extracting data from the ServerGO database, Zoho Analytics enables 
+                administrators to gain valuable insights into server utilization, pending requests, 
+                and inventory trends. With its intuitive interface and powerful analytical capabilities, Zoho Analytics empowers administrators to make informed decisions and optimize resource allocation strategies. 
+            </p>
+            <p>
+                The integration ensures seamless data synchronization between ServerGO and Zoho Analytics, providing real-time and accurate reporting for better visibility and control over server inventory management. ServerGO users can access customized dashboards, 
+                interactive charts, and scheduled reports, enabling them to monitor key metrics and trends for efficient server provisioning. The integration of Zoho Analytics elevates the analytical capabilities of ServerGO, enhancing the overall effectiveness of the server inventory management system.
+            </p>
+            <img src="ZA.png">
+            <p>Zoho Analytics employs the powerful Data Bridge feature to seamlessly integrate data from multiple sources into ServerGO. With Data Bridge, ServerGO can connect to various data repositories, including external databases, cloud storage, and
+                 third-party applications. This integration enables ServerGO to fetch relevant data from disparate sources and consolidate it into a unified data model within Zoho Analytics. By configuring data connections and mapping fields, Data Bridge ensures the 
+                 synchronization of data between ServerGO and Zoho Analytics, providing a comprehensive and up-to-date view of server inventory and allocation. The flexibility and scalability of Data Bridge allow ServerGO to handle large volumes of data efficiently, enabling administrators
+                  to perform complex analyses and generate insightful reports. The utilization of Data Bridge in Zoho Analytics further enhances the data integration capabilities of ServerGO, enabling seamless
+                 access to consolidated and accurate data for informed decision-making.</p>
+        </article>
+    </section>
+    <section class="main-section" id="if...else_statement">
+      <header>10. Conclusion</header>
+      <article>
+
+
+
+        <p>
+          In conclusion, ServerGO revolutionizes server inventory management by automating resource allocation and
+          provisioning workflows. It optimizes server utilization, eliminates manual complexities, and ensures efficient
+          resource allocation. With ServerGO, organizations can streamline server provisioning, saving time and
+          resources while maximizing operational efficiency.
+        </p>
+        <p>
+          The integration of the Lyra chatbot enhances user experience by providing interactive support and guidance.
+          Lyra's natural language processing capabilities enable conversational interactions, assisting users in
+          navigating the server request process. By leveraging the power of AI, ServerGO with Lyra simplifies user
+          interactions, improving overall user satisfaction and productivity.
+        </p>
+        <p>Security is a top priority for ServerGO. By implementing the SHA-256 password encryption algorithm, user
+          passwords are securely stored and protected against unauthorized access. The use of salted hashes further
+          enhances security, ensuring robust protection against brute-force and dictionary attacks. ServerGO's
+          commitment to data security instills trust and confidence in users, safeguarding their sensitive information.
+        </p>
+        <p>
+          ServerGO caters to organizations of all sizes, from startups to large enterprises. Its scalability and
+          flexibility make it adaptable to various infrastructure setups. Whether managing a handful of servers or a
+          vast network, ServerGO seamlessly integrates into existing systems, simplifying server inventory management
+          and streamlining allocation processes. With ServerGO, businesses can efficiently manage server resources and
+          focus on strategic tasks, driving growth and innovation
+        </p>
+      </article>
+    </section>
+
+    <!--=============== while statement ===============-->
+
+
+    <!--=============== Reference ===============-->
+
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+      <article>
+        <ul>
+          <li>
+            "<a href="https://openai.com/blog/chatgpt">OpenAI</a>'s resources were consulted and utilized for the
+            development of this servlet project."
+          </li>
+          <li>
+            "The code snippets and examples in this project were referenced from<a
+              href="https://codepen.io/following">CodePen </a>
+          </li>
+          <li>
+            "The concepts and explanations in this project were referenced from <a href="https://www.javatpoint.com/">Javatpoint</a> for in-depth
+            understanding and guidance."
+          </li>
+          <li>Zoho Analytics. (2023). Zoho Analytics. Retrieved from https://www.zoho.com/analytics/</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+
+
+
+</html>

@@ -1,0 +1,3083 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap' rel='stylesheet'>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    .topnav {
+        width: 100%;
+        height: 90px;
+        color: white;
+        background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+        /* padding-left: 30px;
+    padding-top: 20px;
+    padding-right: 50px; */
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .topnav h1 {
+        margin-left: 10px;
+    }
+
+    .topnav div {
+        margin-right: 10px;
+    }
+
+    .profile {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        border: 1px solid white;
+
+    }
+
+    .dashboard {
+        display: flex;
+        height: 1000px;
+    }
+
+    .leftnav {
+        width: 15%;
+        height: 1100px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+    }
+
+    .leftnav div {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        cursor: pointer;
+    }
+
+    .leftnav div:hover img {
+        filter: invert(100%);
+    }
+
+    .leftnav div:hover h2 {
+        color: white;
+
+    }
+
+    .leftnav div img {
+        width: 35px;
+        height: 35px;
+        margin-left: -50px;
+        filter: invert(80%);
+    }
+
+    .leftnav h2 {
+        margin-left: -75px;
+        color: lightgray;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .rightnav {
+        width: 85%;
+        height: 1100px;
+        border: 1px solid green;
+
+        padding: 30px;
+    }
+
+    .rightnav p {
+        font-size: 55px;
+        margin-top: 20px;
+    }
+
+    .content {
+        border: 0.2px solid transparent;
+        width: 100%;
+        height: 800px;
+        border-radius: 10px;
+        margin-top: 60px;
+        overflow: auto;
+        background-color: rgb(240, 242, 250);
+        box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    }
+
+    #logout {
+        /* position: absolute; */
+        margin-top: 590px;
+    }
+
+    .request {
+        /* height: 1000px; */
+        width: 97%;
+        margin-top: 30px;
+        margin-left: 30px;
+        color: #636886;
+        padding-bottom: 0px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .request p {
+        margin-left: 20px;
+
+    }
+
+    .plans {
+        /* border:1px solid black; */
+        width: 100%;
+        height: 600px;
+        margin-top: -10px;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 40px;
+        justify-content: center;
+    }
+
+    .plans div {
+        /* border:1px solid grey; */
+        width: 35%;
+        height: 965px;
+        margin-top: 5px;
+        margin-left: 30px;
+        margin-right: 15px;
+        position: relative;
+        border-radius: 10px;
+        background-color: white;
+        color: black;
+        padding: 15px;
+        /* box-shadow: 6px 6px 10px grey; */
+        box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    }
+
+    #hp .specification,
+    #len .specification,
+    #ora .specification {
+        position: absolute;
+        width: 90%;
+
+
+        top: 45%;
+        left: 5%;
+        padding: 15px
+    }
+
+    #hp .plans div img,
+    #len .plans div img,
+    #ora .plans div img {
+        width: 80%;
+
+        position: absolute;
+        left: 10%;
+        top: 12%;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    #hp .plans div,
+    #len .plans div,
+    #ora .plans div {
+        height: 760px;
+    }
+
+    #hp .plans div h1,
+    #len .plans div h1,
+    #ora .plans div h1 {
+        position: absolute;
+        font-size: 40px;
+        font-weight: 50;
+        top: 7%;
+        left: 3%;
+        margin-left: 10px;
+        margin-top: -35px;
+    }
+
+    #hp .plans div h2,
+    #len .plans div h2,
+    #ora .plans div h2 {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .plans div h1 {
+        position: absolute;
+        font-size: 50px;
+        font-weight: 50;
+        top: 7%;
+        left: 3%;
+        margin-left: 10px;
+        margin-top: -35px;
+    }
+
+    .plans div img {
+
+        width: 80%;
+
+        position: absolute;
+        left: 10%;
+        top: 22%;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .plans div img:hover {
+        transform: scale(1.1);
+        transition: .4s;
+    }
+
+    .specification {
+        position: absolute;
+        width: 90%;
+        height: 600px;
+
+        top: 38%;
+        left: 5%;
+        padding: 15px;
+    }
+
+
+    .plans button,.plans .price{
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+        width: 120px;
+        height: 40px;
+        background-color: #FF5C5C;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+    .plans .price2{
+        position: absolute;
+        bottom: 2%;
+        
+        width: 120px;
+        right: 58%;
+        height: 40px;
+        background-color: #FF5C5C;
+        color: white;
+        border: none;
+        border-radius: 5px;
+       
+        
+    }
+    .price2 p{
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: 100;
+    }
+  
+        
+        
+    
+    #pri{
+        right: 23%;
+        height: 10px;
+        width: fit-content;
+    }
+
+    .plans button:hover {
+        background-color: rgb(255, 72, 72);
+        transform: scale(1.05);
+    }
+
+    .plans input {
+        text-align: center;
+        height: 30px;
+        outline: none;
+        border: none;
+        font-size: 40px;
+        width: 180px;
+        border-bottom: 1px solid black;
+    }
+
+    .company-option {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 150px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid grey;
+        width: 80%;
+        height: 0px;
+        visibility: hidden;
+    }
+
+    .company-option h2 {
+
+        margin-top: 15px;
+        margin-left: 2px;
+
+    }
+
+
+
+    #details input {
+        width: 15px;
+        height: 15px;
+        margin-top: 15px;
+    }
+
+    #details h2 {
+        margin-top: 15px;
+    }
+
+    #details label {
+        line-height: 1.2;
+        margin-top: 10px;
+    }
+
+    #hp,
+    #len,
+    #ora {
+        display: none;
+    }
+
+    #header {
+        background-color: #7C96AB;
+        height: 52px;
+        padding-top: 20px;
+        color: white;
+        margin-top: -33px;
+        margin-left: -35px;
+        width: 83%;
+        z-index: 10;
+        position: absolute;
+
+    }
+
+    #header h2 {
+        width: 10%;
+        margin-left: -90px;
+        text-align: center;
+
+    }
+
+    .title {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        z-index:1;
+    }
+
+    .title p {
+        font-size: 24px;
+    }
+
+    .title div {
+        width: 15%;
+        margin-left: -90px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+
+    #requesting,
+    #his,
+    #cart,
+    #pending {
+        display: none;
+
+
+    }
+
+
+    #atc {
+        right: 30%;
+    }
+
+    #cartrequest {
+        position: absolute;
+        bottom: 6%;
+        right: 7%;
+        width: 120px;
+        height: 40px;
+        background-color: #FF5C5C;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .frame-content {
+        display: block;
+        border: none;
+        position: fixed;
+        inset: auto 0px 0px auto;
+        width: 450px;
+        height: 647px;
+        max-height: 100%;
+        opacity: 1;
+        color-scheme: none;
+        background: none transparent !important;
+        margin: 0px;
+        max-width: 100vw;
+        transform: translateY(0px);
+        transition: none 0s ease 0s !important;
+        visibility: visible;
+        z-index: 0;
+    }
+
+    #chat-button {
+        position: absolute;
+        width: 112px;
+        height: 140px;
+        bottom: 12px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 1;
+        right: 0px;
+    }
+
+    #chat-button:not(.sidebar) .buttonWave {
+        position: absolute;
+        z-index: -1;
+        width: 60px;
+        height: 60px;
+    }
+
+    #chat-button:not(.sidebar).clicked .buttonWave::after {
+        animation: 0.5s ease-out 0s 1 normal none running buttonWave;
+    }
+
+    #chat-button:not(.sidebar) .buttonWave::after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgb(20, 127, 255);
+        opacity: 0.5;
+    }
+
+    #button-body {
+        width: 60px;
+        height: 60px;
+        border-radius: 28px;
+        display: inherit;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        pointer-events: initial;
+        background-size: 130% 130%;
+        transition: all 0.2s ease-in-out 0s;
+        position: relative;
+        color: rgb(0, 125, 252);
+        border: 1px solid #1E88E5;
+    }
+
+    #button-body::before {
+        content: '';
+        transition: opacity 0.5s ease-in-out 0s;
+        position: absolute;
+        inset: -1px;
+        opacity: 0;
+        border-radius: 50%;
+        background-color: rgb(198, 204, 220);
+    }
+
+    #chat-button button i.for-closed.active {
+        transform: translateX(0px);
+    }
+
+    #chat-button button i.for-closed {
+        transform: translateX(-10px);
+    }
+
+    #chat-button button i.active {
+        opacity: 1;
+    }
+
+    #chat-button button i {
+        height: 26px;
+        width: 26px;
+        position: absolute;
+        opacity: 0;
+        transition: all 0.2s ease-in-out 0s;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        /* justify-content: center; */
+    }
+
+    i {
+        user-select: none;
+    }
+
+    #chat-button button i.type1 svg {
+        fill: currentcolor;
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #chat-button button i.type1::after {
+        content: '';
+        position: absolute;
+        width: 68px;
+        height: 68px;
+        border-radius: 32px;
+        background: rgb(255, 255, 255);
+        transition: all 0.2s ease-in-out 0s;
+        transform: scale(0);
+        right: -18px;
+    }
+
+    #chat-button button i.for-closed.active {
+        transform: translateX(0px);
+    }
+
+    #chat-button button i.for-closed {
+        transform: translateX(-10px);
+    }
+
+    #chat-button button i.type2 {
+        width: 32px;
+        height: 32px;
+    }
+
+    #button button i.type1.for-opened {
+        width: 31px;
+        height: 28px;
+    }
+
+    #chat-button button i.for-opened {
+        transform: translateX(10px);
+    }
+
+    button,
+    button.material-icons {
+        background: none;
+        border: 0px;
+        color: inherit;
+        font-style: inherit;
+        font-variant: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: normal;
+        overflow: visible;
+        padding: 0px;
+        user-select: none;
+        outline: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+
+    #chat-button button i.type2 svg {
+        width: 32px;
+        height: 32px;
+        fill: rgb(0, 125, 252);
+        transform: scale(0);
+    }
+
+    svg:not(:root) {
+        overflow-clip-margin: content-box;
+        overflow: hidden;
+    }
+
+    #button-body {
+        box-shadow: rgba(0, 77, 255, 0.5) 0px 4px 24px;
+    }
+
+    body:not(.mobile) #button button:not(.disabled):hover i.type1 svg,
+    body:not(.mobile) #button button:not(.disabled):focus i.type1 svg {
+        transform: scale(1.4);
+    }
+
+    body:not(.mobile) #button button:not(.disabled):hover i.type1::after,
+    body:not(.mobile) #button button:not(.disabled):focus i.type1::after {
+        transform: scale(1);
+    }
+
+    #chat-button button i.for-closed.active {
+        transform: translateX(0px);
+    }
+
+    .chat.chrome,
+    .start-group.chrome {
+        box-shadow: rgba(0, 18, 46, 0.16) 0px 8px 36px 0px;
+    }
+
+    .chat {
+        max-height: calc(100% - 47px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat,
+    .start-group {
+        width: 372px;
+        position: fixed;
+        bottom: 26px;
+        border-radius: 16px;
+        pointer-events: auto;
+        box-shadow: rgba(0, 18, 46, 0.16) 0px 8px 22px 0px;
+        overflow: hidden;
+        z-index: 999;
+        right: 48px;
+        left: auto;
+        background-color: white;
+    }
+
+    .message-operator.bots-quick-replies {
+        width: 85%;
+        background-color: rgb(255, 255, 255);
+        margin-top: 0px;
+        float: right;
+    }
+
+    .message-operator.bots-quick-replies .button-wrapper {
+        margin-top: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+        width: 100%;
+        border: none;
+    }
+
+    .message-operator {
+        color: rgb(6, 19, 43);
+        background: rgb(240, 242, 247);
+        float: left;
+    }
+
+    .message {
+        padding: 10px 16px;
+        border-radius: 20px;
+        margin: 2px 0px;
+        font-size: 15px;
+        line-height: 20px;
+        overflow-wrap: break-word;
+        display: inline-block;
+        max-width: 85%;
+        clear: both;
+        position: relative;
+        transition: margin 0.28s ease-in-out 0s;
+    }
+
+    .input-group {
+        padding: 0px 28px 6px;
+        width: 90%;
+        position: relative;
+        background: rgb(255, 255, 255);
+        z-index: 3;
+        flex: 0 0 auto;
+    }
+
+    .input-group .footer-input-wrapper,
+    .input-group .footer-icons-wrapper {
+        transition: all 0.5s ease-in-out 0s;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    textarea {
+        border: 0px;
+        width: 100%;
+        font-size: 17px;
+        margin: 20px 0px 14px;
+        resize: none;
+        line-height: 24px;
+        overflow: hidden;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+        flex: 1 0 0;
+        outline: none;
+    }
+
+    .send-icon {
+        width: 26px;
+        height: 26px;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 26px;
+        flex: 0 0 26px;
+        -webkit-backface-visibility: hidden;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        cursor: pointer;
+    }
+
+    hr {
+        margin: 0px;
+        border-width: 0px 0px 1px;
+        border-top-style: initial;
+        border-right-style: initial;
+        border-left-style: initial;
+        border-top-color: initial;
+        border-right-color: initial;
+        border-left-color: initial;
+        border-image: initial;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(219, 223, 230);
+    }
+
+    #conversation-group {
+        padding: 0px 28px;
+        width: 90%;
+        height: 357px;
+        overflow: hidden auto;
+        background: rgb(255, 255, 255);
+        transition: all 0.3s ease 0s;
+        max-height: 357px;
+        min-height: 160px;
+        flex: 0 1 auto;
+    }
+
+    .message-operator.bots-quick-replies button {
+        font-size: 15px;
+        padding: 8px 16px;
+        border: 1px solid;
+        border-radius: 20px;
+        margin: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: inherit;
+    }
+
+    .offline-message span.online::before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: calc(50% - 4px);
+        background: rgb(88, 183, 67);
+        border-radius: 50%;
+        left: 0px;
+    }
+
+    .no-clip-path .offline-message {
+        padding: 14px 28px 20px;
+    }
+
+    .offline-message span {
+        z-index: 2;
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    .message-operator.message-with-buttons .button-wrapper,
+    .message-operator .message-with-buttons .button-wrapper,
+    .message-operator.bots-quick-replies .button-wrapper {
+        background: rgb(255, 255, 255);
+        width: 100%;
+        margin-top: 10px;
+        /* border-width: 0px 1px 1px;
+                border-right-style: solid;
+                border-bottom-style: solid;
+                border-left-style: solid;
+                border-right-color: rgb(235, 238, 240);
+                border-bottom-color: rgb(235, 238, 240);
+                border-left-color: rgb(235, 238, 240);*/
+        border-image: initial;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-style: initial;
+        border-top-color: initial;
+        position: relative;
+    }
+
+    #chat-button button i.for-opened.active {
+        transform: translateX(0px);
+    }
+
+    .message-operator.bots-quick-replies .sent {
+        font-size: 15px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 20px;
+        margin: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: inherit;
+    }
+
+    .message-operator.message-with-buttons .sent,
+    .message-operator .message-with-buttons .sent,
+    .message-operator.bots-quick-replies .sent {
+        margin: 0px auto;
+        min-width: 100%;
+        display: block;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 8px 16px;
+        color: rgb(0, 125, 252);
+        background: #f2f9ff;
+        position: relative;
+        z-index: 2;
+        outline: none;
+        border-radius: 20px;
+        font-weight: normal;
+    }
+
+
+    .chat-header {
+        padding: 24px 28px 0px;
+        background: linear-gradient(-61deg, rgb(0, 224, 216), rgb(32, 29, 142));
+        position: relative;
+        z-index: 4;
+        flex: 0 0 auto;
+    }
+
+    .avatars-wrapper {
+        width: 52px;
+        height: 52px;
+        margin: 0px 18px 0px 0px;
+        float: left;
+    }
+
+    .chat h2.oneline {
+        margin-top: 0px;
+        line-height: 52px;
+        min-height: 52px;
+    }
+
+    .chat h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: currentcolor;
+        margin: 4px 0px 0px;
+        padding: 0px;
+        display: inline-block;
+        position: relative;
+        max-width: calc(100% - 145px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: bottom;
+
+    }
+
+    .chat h2 .emoji {
+        width: 31px;
+        height: 31px;
+    }
+
+    button.material-icons.exit-chat,
+    label.material-icons.exit-chat {
+        margin-right: -3px;
+    }
+
+    button.material-icons.options,
+    button.material-icons.exit-chat,
+    label.material-icons.options,
+    label.material-icons.exit-chat {
+        z-index: unset;
+    }
+
+    button.material-icons,
+    label.material-icons {
+        position: relative;
+        z-index: 1;
+        margin: 15px 0px 8px 11px;
+        float: right;
+    }
+
+    button.material-icons.options::before,
+    button.material-icons.exit-chat::before,
+    label.material-icons.options::before,
+    label.material-icons.exit-chat::before {
+        background: rgba(0, 36, 92, 0.16);
+    }
+
+    button.material-icons::before,
+    label.material-icons::before {
+        content: '';
+        position: absolute;
+        background: rgb(239, 242, 246);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        z-index: -1;
+        transition: all 0.16s ease-in-out 0s;
+        transform: scale(0);
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+    }
+
+    button.material-icons svg#ic-minimize,
+    button.material-icons svg.options-icon,
+    label.material-icons svg#ic-minimize,
+    label.material-icons svg.options-icon {
+        fill: currentcolor;
+    }
+
+
+    element.style {}
+
+    .tidio-1s5t5ku span {
+        background: rgb(255, 255, 255);
+        padding: 6px 8px;
+        border-radius: 2px;
+        box-shadow: rgba(0, 18, 46, 0.32) 0px 2px 8px 0px;
+        font-size: 13px;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        transition: all 0.16s ease-in-out 0s;
+        z-index: 1;
+        right: calc(100% + 10px);
+        top: 50%;
+        transform: translate(5px, -50%);
+        color: rgb(6, 19, 43);
+    }
+
+    .offline-message {
+        margin: 18px -28px 0px;
+        color: currentcolor;
+        width: calc(100% + 56px);
+        padding: 14px 28px 7px;
+        position: relative;
+        background-size: 100% calc(100% + 12px);
+        z-index: 1;
+    }
+
+    .no-clip-path .offline-message {
+        padding: 14px 28px 20px;
+    }
+
+    .offline-message span.online {
+        padding-left: 20px;
+    }
+
+    .no-clip-path .offline-message::after {
+        content: '';
+        position: absolute;
+        width: calc(100% + 10px);
+        bottom: -8px;
+        left: -5px;
+        border-image-source: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNzIgMTUiPgogIDxwYXRoIGQ9Ik0zNDkuOCAxLjRDMzM0LjUuNCAzMTguNSAwIDMwMiAwaC0yLjVjLTkuMSAwLTE4LjQuMS0yNy44LjQtMzQuNSAxLTY4LjMgMy0xMDIuMyA0LjctMTQgLjUtMjggMS4yLTQxLjUgMS42Qzg0IDcuNyA0MS42IDUuMyAwIDIuMnY4LjRjNDEuNiAzIDg0IDUuMyAxMjguMiA0LjEgMTMuNS0uNCAyNy41LTEuMSA0MS41LTEuNiAzMy45LTEuNyA2Ny44LTMuNiAxMDIuMy00LjcgOS40LS4zIDE4LjctLjQgMjcuOC0uNGgyLjVjMTYuNSAwIDMyLjQuNCA0Ny44IDEuNCA4LjQuMyAxNS42LjcgMjIgMS4yVjIuMmMtNi41LS41LTEzLjgtLjUtMjIuMy0uOHoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==);
+        border-image-slice: 0 0 100%;
+        border-image-width: 0 0 15px;
+        border-image-repeat: stretch;
+        border-width: 0px 0px 15px;
+        border-bottom-style: solid;
+        border-color: initial;
+        border-top-style: initial;
+        border-left-style: initial;
+        border-right-style: initial;
+    }
+
+    .input-group .footer-input-wrapper,
+    .input-group .footer-icons-wrapper {
+        transition: all 0.5s ease-in-out 0s;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    .send-icon:hover svg path {
+        fill: #1775ec;
+    }
+
+    .message-operator {
+        color: rgb(6, 19, 43);
+        background: rgb(240, 242, 247);
+        float: left;
+    }
+
+    .message span.message-content {
+        white-space: pre-line;
+    }
+
+    #chatContainer {
+        transition: all 0.3s ease-in-out;
+        right: -300px;
+
+    }
+
+    .onlyBubble {
+        display: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .open {
+        display: block;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #chatContainer.open {
+        right: 0;
+    }
+
+    .footer-input-wrapper {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .clicked {
+        display: none !important;
+    }
+
+    #button:not(.sidebar).clicked .buttonWave::after {
+        animation: 0.5s ease-out 0s 1 normal none running buttonWave;
+    }
+
+    #button:not(.sidebar) .buttonWave::after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgb(20, 127, 255);
+        opacity: 0.5;
+    }
+
+    .sentText {
+        margin: 0px auto;
+        width: max-content;
+        display: block;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 8px 16px;
+        color: rgb(0, 125, 252);
+        background: #f2f9ff;
+        position: relative;
+        z-index: 2;
+        outline: none;
+        border-radius: 20px;
+        font-weight: normal;
+        margin: 10px;
+        margin-left: -4px;
+    }
+
+    .botText {
+        color: rgb(6, 19, 43);
+        background: rgb(240, 242, 247);
+        padding: 10px 16px;
+        border-radius: 20px;
+        margin: 2px 0px;
+        font-size: 15px;
+        line-height: 20px;
+        overflow-wrap: break-word;
+        display: inline-block;
+        max-width: 85%;
+        clear: both;
+        position: relative;
+        transition: margin 0.28s ease-in-out 0s;
+    }
+
+    .svgsent svg path {
+        fill: #1775ec;
+    }
+
+    .superchatbot {
+        position: absolute;
+    }
+
+    .returnbutton {
+        background-color: white;
+        border: 1px solid black;
+        margin-top: 15px;
+        margin-left: 35px;
+        border-radius: 3px;
+        padding: 10px;
+    }
+    .welcomenav{
+        display: flex;
+        justify-content: space-between;
+    }
+    .welcomenav h1{
+        margin-top: 30px;
+        font-weight: 100;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <!-- <div class='topnav'>
+    <h1>Welcome <span>Devakumar</span></h1>
+    <div class='profile'></div>
+  </div> -->
+    <section class='superchatbot'>
+        <div class='chat-board chatbot chat new trending'></div>
+        <div class='frame-content' id='fc'>
+            <div class='widget-position-right sidebar-position-right onlyBubble' id='chatContainer'>
+
+                <div class='chat no-clip-path chrome moveFromRight-enter-done'>
+                    <div class='chat-header project-online'
+                        style='color: rgb(255, 255, 255); background: linear-gradient(135deg, rgb(42, 39, 218) 0%, rgb(0, 204, 255) 100%);'>
+                        <h2 class='oneline'><span>Lyra here !</span></h2>
+                        <button class='material-icons exit-chat ripple tidio-1s5t5ku' id='minimize-button' type='button'
+                            aria-label='Minimize' style='color: rgb(255, 255, 255);'>
+                            <svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'
+                                id='ic-minimize' onclick='mini()'>
+                                <path d='M0 0h24v24H0z' fill='none'></path>
+                                <path d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'></path>
+                            </svg>
+                            <span>Minimize</span>
+                        </button>
+                        <div class='offline-message'
+                            style='background-image: linear-gradient(135deg, rgba(42, 39, 218, 0.72) 0%, rgba(0, 204, 255, 0.72) 100%);'>
+                            <span class='online'><span>We are online</span></span>
+                        </div>
+                    </div>
+                    <div id='conversation-group' role='log'>
+                        <div id='messages' aria-live='polite' aria-atomic='false' data-testid='messagesLog'>
+                            <div class='message message-operator  '>
+                                <span class='message-content'>Hi</span>
+                            </div>
+                            <div class='message message-operator bots-quick-replies'>
+                                <div class='button-wrapper'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id='conversation-scroll'>
+                            <div style='top: 0px; height: 55.8952px;'></div>
+                        </div>
+                    </div>
+                    <div class='input-group '>
+                        <hr>
+                        <div class='drag-active-wrapper footer-input-wrapper'>
+                            <textarea id='chat-input' rows='1' placeholder='Hit the buttons to respond'
+                                aria-label='New message' data-testid='newMessageTextarea'></textarea>
+
+                            <button id='SentButton' class='send-icon' title='SentButton' type='button'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' xml:space='preserve'>
+                                    <path fill='#d7d7d7'
+                                        d='M22,11.7V12h-0.1c-0.1,1-17.7,9.5-18.8,9.1c-1.1-0.4,2.4-6.7,3-7.5C6.8,12.9,17.1,12,17.1,12H17c0,0,0-0.2,0-0.2c0,0,0,0,0,0c0-0.4-10.2-1-10.8-1.7c-0.6-0.7-4-7.1-3-7.5C4.3,2.1,22,10.5,22,11.7z'>
+                                    </path>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id='chat-button' data-testid='widgetButton' class='chat-closed mobile-size__medium' onclick='zindex()'>
+                <div class='buttonWave'></div>
+                <button type='button' id='button-body' data-testid='widgetButtonBody' class='chrome' tabindex='0'
+                    aria-label='Open chat widget'
+                    style='background: linear-gradient(135deg, rgb(42, 39, 218), rgb(0, 204, 255)); box-shadow: rgba(0, 77, 255, 0.5) 0px 4px 24px;'>
+                    <i class='material-icons type1 for-closed active' style='color: rgb(255, 255, 255);'>
+                        <svg id='ic_bubble' fill='#FFFFFF' height='24' viewBox='0 0 24 24' width='24'
+                            xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                            <path d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'></path>
+                            <path d='M0 0h24v24H0z' fill='none'></path>
+                        </svg>
+                    </i>
+
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class='dashboard'>
+        <section class='leftnav'>
+            <!-- <div onclick='inven()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/1436/1436706.png'>
+                <h2>Request</h2>
+            </div> -->
+            <div onclick='status()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/7582/7582378.png'>
+                <h2>Status</h2>
+            </div>
+            <div onclick='history()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/709/709790.png'>
+                <h2>Delivered</h2>
+            </div>
+            <div onclick='pending()'>
+                <img src='   https://cdn-icons-png.flaticon.com/512/3602/3602500.png '>
+                <h2>Pending</h2>
+            </div>
+            <div onclick='car()'>
+                <img src='   https://cdn-icons-png.flaticon.com/512/1170/1170678.png '>
+                <h2>Check Out</h2>
+            </div>
+
+            <div onclick='companyopt() ;inven();'>
+                <img src='https://img.icons8.com/?size=1x&id=37194&format=png'>
+                <h2>Franchise</h2>
+                <div class='company-option' id='co'>
+                    <h2 onclick='dell()'>Dell</h2>
+                    <h2 onclick='hp()'>HP</h2>
+                    <h2 onclick='len()'>Lenovo</h2>
+                    <h2 onclick='ora()'>Oracle</h2>
+                </div>
+
+            </div>
+            <div id='logout' onclick="logout()">
+                <img src='https://cdn-icons-png.flaticon.com/512/992/992680.png'>
+                <h2>Logout</h2>
+            </div>
+        </section>
+        <section class='rightnav'>
+            <div class="welcomenav">
+            <p id="welcomeuser">
+                
+            </p>
+            <h1>Balance:<span id="balance">0</span></h1>
+            </div>
+
+            <div class='content'>
+                <section id='inventory'>
+                    <section class='request' id='dell'>
+                        <p>DELL</p>
+                        <div class='plans'>
+                            <div>
+                                <h1>PowerEdge R250 Rack Server</h1>
+                                <img
+                                    src='https://i.dell.com/is/image/DellContent/content/dam/images/products/servers/poweredge/r250/dellemc-per250-honeycomb-4x3-5-lf.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=1770&qlt=100,1&resMode=sharp2&size=1770,402&chrss=full'>
+                                <section class='specification'>
+                                    <form>
+                                        <section id='details'>
+                                            <h2>Processor</h2>
+                                            <input type='checkbox' id='delpro1'>
+                                            <label>Intel Xeon E-2334 3.4GHz, 8M Cache, 4C/8T, Turbo (65W), 3200 MT/s
+                                            </label><br>
+                                            <input type='checkbox' id='delpro2'>
+                                            <label>Intel Xeon E-2336 2.9GHz, 12M Cache, 6C/12T, Turbo (65W), 3200 MT/s
+                                            </label><br>
+                                            <h2>Memory</h2>
+                                            <input type='checkbox' id='delme1'>
+                                            <label>8GB UDIMM, 3200MT/s, ECC </label><br>
+                                            <input type='checkbox' id='delme2'>
+                                            <label>16GB UDIMM, 3200MT/s, ECC </label><br>
+                                            <h2>Hard Drive</h2>
+                                            <input type='checkbox' id='delhd1'>
+                                            <label>8TB Hard Drive SAS FIPS-140 7.2K 512e 3.5in Cabled </label><br>
+                                            <input type='checkbox' id='delhd2'>
+                                            <label>16TB Hard Drive SAS ISE 12Gbps 7.2K 512e 3.5in Cabled </label><br>
+                                            <h2>Mother Board</h2>
+                                            <input type='checkbox' id='delmb1'>
+                                            <label>PowerEdge R250 Motherboard with Broadcom 5720 Dual Port 1Gb On-Board
+                                                LOM,
+                                                V2 </label><br>
+                                            <input type='checkbox' id='delmb2'>
+                                            <label>PowerEdge R250 Motherboard with Broadcom 5720 Dual Port 1Gb On-Board
+                                                LOM
+                                            </label><br>
+                                        </section>
+                                    </form>
+
+                                </section>
+                                <button onclick='a()'>REQUEST</button>
+                                <div class="price" id="pri">Rs.40,000</div>
+                                <!-- <button onclick='addtocart(1)' id='atc'>ADD TO CART</button> -->
+                            </div>
+                            <div>
+                                <h1>PowerEdge R750 Rack Server</h1>
+                                <img
+                                    src='https://i.dell.com/is/image/DellContent//content/dam/images/products/servers/poweredge/r750/dellemc-per750-12x2-5-lf.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=1232&qlt=100,1&resMode=sharp2&size=1232,402&chrss=full'>
+                                <section class='specification'>
+                                    <form>
+                                        <section id='details'>
+                                            <h2>Processor</h2>
+                                            <input type='checkbox' id='del2pro1'>
+                                            <label>Intel Xeon Platinum 8351N 2.4G, 36C/72T, 11.2GT/s, 54M Cache, Turbo,
+                                                HT
+                                                (225W) DDR4-2933 </label><br>
+                                            <input type='checkbox' id='del2pro2'>
+                                            <label>Intel Xeon Platinum 8352Y 2.2G, 32C/64T, 11.2GT/s, 48M Cache, Turbo,
+                                                HT
+                                                (205W) DDR4-3200 </label><br>
+                                            <h2>Memory</h2>
+                                            <input type='checkbox' id='del2me1'>
+                                            <label>32GB RDIMM, 3200MT/s, Dual Rank, 16Gb BASE x8 </label><br>
+                                            <input type='checkbox' id='del2me2'>
+                                            <label>64GB RDIMM, 3200MT/s, Dual Rank, 16Gb </label><br>
+                                            <h2>Hard Drive</h2>
+                                            <input type='checkbox' id='del2hd1'>
+                                            <label>960GB SSD SAS ISE Read Intensive 12Gbps 512 2.5in Hot-plug AG
+                                                Drive,3.5in
+                                                HYB CARR, 1 DWPD </label><br>
+                                            <input type='checkbox' id='del2hd2'>
+                                            <label>1.6TB SSD SAS Mixed Use 12Gbps 512 2.5in HP AG Drive,3.5in HYB CARR,
+                                                3
+                                                DWPD </label><br>
+                                            <h2>Mother Board</h2>
+                                            <input type='checkbox' id='del2mb1'>
+                                            <label>R750 Motherboard with Broadcom 5720 Dual Port 1Gb On-Board LOM
+                                            </label><br>
+                                            <input type='checkbox' id='del2mb2'>
+                                            <label>PowerEdge R250 Motherboard with Broadcom 5720 Dual Port 1Gb On-Board
+                                                LOM
+                                            </label><br>
+                                        </section>
+                                    </form>
+
+                                </section>
+                                <button onclick='b()'>REQUEST</button>
+                                <div class="price" id="pri">Rs.50,000</div>
+                                <!-- <button onclick='addtocart(2)' id='atc'>ADD TO CART</button> -->
+                            </div>
+                            <div>
+                                <h1>PowerEdge T150 Tower Server</h1>
+                                <img
+                                    src='https://i.dell.com/is/image/DellContent//content/dam/images/products/servers/poweredge/r550/dellemc-per550-16x2-5-above-lf.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=1258&qlt=100,1&resMode=sharp2&size=1258,402&chrss=full'>
+                                <section class='specification'>
+                                    <form>
+                                        <section id='details'>
+                                            <h2>Processor</h2>
+                                            <input type='checkbox' id='del3pro1'>
+                                            <label>Intel Pentium G6405T 3.5GHz, 4M Cache, 2C/4T, No Turbo (35W), 2666
+                                                MT/s
+                                            </label><br>
+                                            <input type='checkbox' id='del3pro2'>
+                                            <label>Intel Pentium G6505 4.2GHz, 4M Cache, 2C/4T, No Turbo (58W), 2666
+                                                MT/s
+                                            </label><br>
+                                            <h2>Memory</h2>
+                                            <input type='checkbox' id='del3me1'>
+                                            <label>8GB UDIMM, 3200MT/s, ECC </label><br>
+                                            <input type='checkbox' id='del3me2'>
+                                            <label>16GB UDIMM, 3200MT/s, ECC </label><br>
+                                            <h2>Hard Drive</h2>
+                                            <input type='checkbox' id='del3hd1'>
+                                            <label>480GB SSD SATA Mixed Use 6Gbps 512e 2.5in w/3.5in Brkt AG, Cabled
+                                            </label><br>
+                                            <input type='checkbox' id='del3hd2'>
+                                            <label>1.92TB SSD SATA Read Intensive ISE 6Gbps 512n 2.5in w/3.5in Brkt AG,
+                                                Cabled </label><br>
+                                            <h2>Network Cards</h2>
+                                            <input type='checkbox' id='del3mb1'>
+                                            <label>Broadcom 5719 Quad Port 1GbE BASE-T Adapter, PCIe Full Height
+                                            </label><br>
+                                            <input type='checkbox' id='del3mb2'>
+                                            <label>Intel Ethernet i350 Quad Port 1GbE BASE-T Adapter, PCIe Full Height,
+                                                V2,
+                                                FIRMWARE RESTRICTIONS APPLY </label><br>
+                                        </section>
+                                    </form>
+
+                                </section>
+                                <button onclick='c()'>REQUEST</button>
+                                <div class="price" id="pri">Rs.60,000</div>
+                                <!-- <button onclick='addtocart(3)' id='atc'>ADD TO CART</button> -->
+                            </div>
+                            <div>
+                                <h1>PowerEdge T440 Tower Server</h1>
+                                <img
+                                    src='https://i.dell.com/is/image/DellContent//content/dam/images/products/servers/poweredge/r7525/dellemc-per7525-8x35-emc-lcd-bezel-above-ff.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=891&qlt=100,1&resMode=sharp2&size=891,402&chrss=full'>
+                                <section class='specification'>
+                                    <form>
+                                        <section id='details'>
+                                            <h2>Processor</h2>
+                                            <input type='checkbox' id='del4pro1'>
+                                            <label>Intel Xeon Gold 5215 2.5G, 10C/20T, 10.4GT/s, 13.75M Cache, Turbo, HT
+                                                (85W) DDR4-2666 </label><br>
+                                            <input type='checkbox' id='del4pro2'>
+                                            <label>
+                                                Intel Xeon Silver 4210R 2.4G, 10C/20T, 9.6GT/s, 13.75M Cache, Turbo, HT
+                                                (100W) DDR4-2400 </label><br>
+                                            <h2>Memory</h2>
+                                            <input type='checkbox' id='del4me1'>
+                                            <label>64GB RDIMM, 3200MT/s, Dual Rank, 16Gb </label><br>
+                                            <input type='checkbox' id='del4me2'>
+                                            <label>32GB RDIMM, 3200MT/s, Dual Rank, 16Gb BASE x8 </label><br>
+                                            <h2>Hard Drive</h2>
+                                            <input type='checkbox' id='del4hd1'>
+                                            <label>1.6TB SSD SAS ISE, Mixed Use, up to 24Gbps 512e 2.5in with 3.5in HYB
+                                                CARR, AG Drive </label><br>
+                                            <input type='checkbox' id='del4hd2'>
+                                            <label>1.92TB SSD SAS ISE, Read Intensive, up to 24Gbps 512e 2.5in with
+                                                3.5in
+                                                HYB CARR, AG Drive </label><br>
+                                            <h2>Network Cards</h2>
+                                            <input type='checkbox' id='del4mb1'>
+                                            <label>Broadcom 5719 Quad Port 1GbE BASE-T Adapter, PCIe Full
+                                                Height</label><br>
+                                            <input type='checkbox' id='del4mb2'>
+                                            <label>Intel Ethernet i350 Quad Port 1GbE BASE-T Adapter, PCIe Full Height,
+                                                V2,
+                                                FIRMWARE RESTRICTIONS APPLY </label><br>
+                                        </section>
+                                    </form>
+
+                                </section>
+                                <button onclick='d()'>REQUEST</button>
+                                <div class="price" id="pri">Rs.55,000</div>
+                                <!-- <button onclick='addtocart(4)' id='atc'>ADD TO CART</button> -->
+
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- ---------------------------------------------hp-----------------------------------------------------------------------------------
+                 -->
+
+                    <section class='request' id='hp'>
+                        <p>HEWLETT PACKARD</p>
+                        <div class='plans'>
+                            <div>
+                                <h1>HPE Superdome Flex 280 Server</h1>
+                                <img src='https://assets.ext.hpe.com/is/image/hpedam/s00009376?$zoom$#.png'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>Intel Xeon Scalable processors (Platinum or Gold) </label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>DDR4 Memory with Optional Persistent Memory</label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label> 4.8 TB of NVMe storage and up to 384 TB of SAS or SATA storage with
+                                            support for HPE Smart Array Controller</label><br>
+                                        <h2>Networking</h2>
+
+                                        <label>10/25/40/100 GbE network adapters with support for HPE FlexFabric and HPE
+                                            Synergy Virtual Connect </label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='e()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.45,000</p></section>
+                                <button onclick='addtocart(5)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>HPE ProLiant DL320 Gen11</h1>
+                                <img src='https://assets.ext.hpe.com/is/image/hpedam/s00011807?$zoom$#.png'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label> 4th Generation Intel Xeon Scalable Processors </label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>2.0 TB per socket, one socket only, when populated with 128 GB DDR5
+                                            Memory. </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>4 LFF SAS/SATA HDDs or SSDs. </label><br>
+
+                                        <h2>Security</h2>
+
+                                        <label>UEFI Secure Boot and Secure Start support.
+                                            Intel® Software Guard Extensions (SGX) support.
+                                        </label><br>
+
+                                    </section>
+
+
+                                </section>
+                                <button onclick='f()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.45,000</p></section>
+                                <button onclick='addtocart(6)' id='atc'>ADD TO CART</button>
+
+                            </div>
+                            <div>
+                                <h1>HPE ProLiant DL325 Gen10 Plus v2 server</h1>
+                                <img src='https://assets.ext.hpe.com/is/image/hpedam/s00010635?$zoom$#.png'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>3rd Generation AMD EPYC™ Processors </label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>4.0 TB with 256 GB DDR4 </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>4 LFF SAS/SATA, 8 SFF SAS/SATA/NVMe with optional 1x 2 SFF SAS/SATA or 1x
+                                            2 SFF NVMe </label><br>
+
+                                        <h2>Network Cards</h2>
+
+                                        <label>Optional OCP and/or optional PCIe Network adapters, depending on model
+                                        </label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='g()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.48,000</p></section>
+                                <button onclick='addtocart(7)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>HPE ProLiant DL360 Gen10 Plus server</h1>
+                                <img src='https://assets.ext.hpe.com/is/image/hpedam/s00009890?$zoom$#.png'>
+                                <section class='specification'>
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>Intel Xeon Scalable 8300 series,
+                                            Intel® Xeon Scalable 6300 series </label><br>
+                                        <h2>Memory</h2>
+
+                                        <label>6.0 TB per socket, when populated with 256 GB DDR4 and 512 GB Persistent
+                                            Memory </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Up to 10 SFF SAS/SATA HDDs or SATA/SAS/NVMe U.2 or U.3 SDDs, depending on
+                                            model </label><br>
+
+                                        <h2>Network Controller</h2>
+
+                                        <label>Wide range of speeds, cabling, chipsets and form factors. Please see
+                                            QuickSpecs for network card choices</label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='h()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.52,000</p></section>
+                                <button onclick='addtocart(8)' id='atc'>ADD TO CART</button>
+
+                            </div>
+
+                        </div>
+                    </section>
+                    <!-- -----------------------------------------------------lenovo-------------------------------------------------- -->
+
+
+                    <section class='request' id='len'>
+                        <p>LENOVO</p>
+                        <div class='plans'>
+                            <div>
+                                <h1>ThinkSystem SR650 V3 Rack Server</h1>
+                                <img
+                                    src='https://www.lenovo.com/medias/lenovo-rack-server-thinksystem-sr650-v3-subseries-hero-intel.png?context=bWFzdGVyfHJvb3R8MTU3NDE4fGltYWdlL3BuZ3xoZWEvaDVlLzE2NjkxNzEwNTkxMDA2LnBuZ3xmZjE4NzQzNzgxYTcxMTUxM2NiMzMyYTc0YjU3MjBkODI5MWRkZGNjMzkwYzhjYmZjZDUwOGViMjgwYTU5MTUx'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>Up to 2x 4th Gen Intel Xeon Scalable processors, up to 60 cores and 350W
+                                            TDP</label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>Supports up to 32x TruDDR5 3DS/RDIMMs</label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label> Up to 12x PCIe 4.0/5.0 slots, 1x OCP 3.0 slot, 1x cabled internal
+                                            HBA/RAID adapter that doesn't occupy a standard PCIe slot</label><br>
+                                        <h2>Network Interface</h2>
+
+                                        <label>LOM adapter installed in the OCP 3.0 slot, optional for front access
+                                            Networking PCIe adapters</label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='i()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.38,000</p></section>
+                                <button onclick='addtocart(9)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>ThinkSystem SR650 Rack Server</h1>
+                                <img
+                                    src='https://www.lenovo.com/medias/lenovo-servers-rack-thinksystem-sr650-subseries-hero.png?context=bWFzdGVyfHJvb3R8ODI4NzJ8aW1hZ2UvcG5nfGgwOC9oMzQvMTI5NjM1NzcyMDA2NzAucG5nfGI2MjNkN2VmOTcxMjkzMDUxNjE0ZDVkZjMzOGNhMDMzNjkwNTMxZTg3MzhiOTA0MDI0OTAzZjU1NWI2ZTUwMDA'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label> Up to 2 second-generation Intel Xeon Platinum processor, up to
+                                            205W</label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>Up to 7.5TB in 24x DIMM slots using 128GB DIMMs and Intel Optane DC
+                                            Persistent Memory; 2666MHz / 2933MHz TruDDR4 </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Up to 14x 3.5” or up to 24. 2.5” hot-swap bays (up to 12 AnyBay bays or
+                                            up to 24 NVMe bays); up to 2x M.2 boot drives (RAID 1) </label><br>
+
+                                        <h2>Network Interface</h2>
+
+                                        <label>2/4-port 1GbE LOM; 2/4-port 10GbE LOM (Base-T or SFP+); 1x dedicated 1GbE
+                                            management port
+                                        </label><br>
+
+                                    </section>
+
+
+                                </section>
+                                <button onclick='j()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.38,000</p></section>
+                                <button onclick='addtocart(10)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>ThinkEdge SE450 Edge Server</h1>
+                                <img
+                                    src='https://www.lenovo.com/medias/lenovo-server-thinkedge-se450-hero.png?context=bWFzdGVyfHJvb3R8MTk2MzM5fGltYWdlL3BuZ3xoZjEvaDZmLzEzMDI0MTc2NDA2NTU4LnBuZ3xmOTA4ZTBjMWVkYTc3MjM3ZmU5NzdiN2JiZWMzN2U4NDVhM2E3YjM1NjQzOTEwZjFmZDVjMTJlNDc1YjdmNzQ1'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>Up to 1x 3rd Gen Intel Xeon Platinum processor, up to 36 cores, up to
+                                            225W TDP </label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>10x DDR4 memory slots; Maximum 1TB using 8x 128GB 3DS RDIMMs; Supports up
+                                            to 2x Intel® Optane™ Persistent Memory 200 Series modules (PMem)
+                                        </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Up to 6x 2.5-inch 7mm drives; Up to 6x NVMe drives supported; 2x M.2 boot
+                                            drives (RAID 1) </label><br>
+
+                                        <h2>Network Interface</h2>
+
+                                        <label>LOM adapter installed in the OCP 3.0 slot; PCIe adapters </label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='k()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.42,000</p></section>
+                                <button onclick='addtocart(11)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>ThinkSystem SR850 V3 Mission-Critical Server</h1>
+                                <img
+                                    src='https://www.lenovo.com/medias/lenovo-mission-critical-thinksystem-sr850-v3-subseries-hero-intel.png?context=bWFzdGVyfHJvb3R8MTU4Njg5fGltYWdlL3BuZ3xoY2UvaDkyLzE2NjkxNzExMzExOTAyLnBuZ3xlZmVkZmVkZTAwZGQxNzk4NjU2YWVjNDI0NTQxNjk3ZDY1NTJmMDg0M2NlNTExZDk1MGJiODIwZGJhNDQ3ODdl'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>SR850 V3 can scale from two to four 4th Gen Intel Xeon </label><br>
+                                        <h2>Memory</h2>
+
+                                        <label>6.0 TB per socket, when populated with 256 GB DDR4 and 512 GB Persistent
+                                            Memory </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Up to 10 SFF SAS/SATA HDDs or SATA/SAS/NVMe U.2 or U.3 SDDs, depending on
+                                            model </label><br>
+
+                                        <h2>Network Controller</h2>
+
+                                        <label>Wide range of speeds, cabling, chipsets and form factors. Please see
+                                            QuickSpecs for network card choices</label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='l()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.43,000</p></section>
+                                <button onclick='addtocart(12)' id='atc'>ADD TO CART</button>
+
+                            </div>
+
+                        </div>
+                    </section>
+                    <!-- ------------------------------------------------------------------------0racle------------------------------------------------------------------------------ -->
+                    <section class='request' id='ora'>
+                        <p>ORACLE</p>
+                        <div class='plans'>
+                            <div>
+                                <h1>Oracle Server X9-2L</h1>
+                                <img
+                                    src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPEBAPDxEREBIOEBAPEBEQEBAPDw8QFRIWIhQRExMYHDQgGRonHhUVLTEjJTU3Li4uGR8/ODMvNyoyLjcBCgoKDg0OGxAQGjclIB8zLS0yLy4uNzE3KysvODUuLy0tLS0tLTM2MC0tNys0LS0uLS0tLS0vLS0tLS0tKysrLf/AABEIAKgBLAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQYCBQcEAwj/xAA5EAABAwIEBAQEBQIGAwAAAAABAAIDBBEFEhMhIjFRkQYUQVIjMmFxFSQzQoE0sUNjcpKhwSVUYv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABwRAQEAAgIDAAAAAAAAAAAAAAABAhExQQMhgf/aAAwDAQACEQMRAD8A7iiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgJdFTvFUMbZY3Gzc2qXE8d7OjOzT/PJBcLqM46juFQjG10NY9jN2yBsbWkgbwsFg0bXJJ7rcYjigpo43aMsmYxMAjaDbMD06W+243QWbMOo7rHVb7h3C1UNi5+997EG9h1Fj9/7LnWB+GKSogbJJDI5zmueXiqrYmXEszQAxhDBYRN2Bub722JDrWq33DuE1W+4dwufVXgijijLg2Q2yj+prQd3AXuZj1XPauqY2eWGKnjdkqfKtD63FA8veXCAOIfYF5Y/fkMu9rhB+g9VvuHcKdRvUdwuAUkzJXMbHFC4PjdM0+axgXiJyxOAdIPmkDm25i19wV630wA4oohtcjzOLkhoOV7tpr7Ps23rz2CDumcdR3Cajeo7hc0psBhhige2O0jtLNGaioqGMe5jXOYWyvItn5X3tZebxM+eCocIrujlEdRE2HDIpxFFAwmeB7zbjlNst/Ww2vdB1PVb7h3CarfcO4XFmV1Wb7Si3XB4NxVtGhbi3MBPH9bg35qw+FopZdZ9QWvY0w0wikoIqd5kYQ2WoblvmjkNyDy6WtuI6RqN6juE1W+4dwuQ+GPDtLU0sD5oHPc6BkjpPM18V3ZphazLM2ETdg6/ESQNi7f4h4NoY43ObE+4ygfmava7gL/AKv1QX/Vb7h3CarfcO4X58r6yOKonhZTU+nDU1MAdJUYw5+WC5cXZXWJyWO3M8l6qX4pc1lNSktEFhnxjd0wLowSX7XjFz0Jsbc0HedVvuHcJqt9w7hcLdDmIDaeidm5b4kbh4OgT8TbMQb+0D1Oy3eIYPSjDxM2JjZC2nuWPms3PJHmyh7rt5m19wg6zqt9w7hNVvuHcLmWLeGqCN0WjSsaZJcjnSeZ5Zf23eFlN4Xo2xyzSRNcIWOdla6pZewuSS2S55Hl1QdL1W+4dwmq33DuFxXycPJ1FCDZwNp8TIzts5wBvy0yCOrth1Xz/D4SdqKG5DA29Ri1s7zdodY7NyXvbkdvqg7dqt9w7hNVvuHcLiuH4bSy1ELX0UIY+XZwmxTUEbj8NwzEAO4XX3sNrXVygwampqhmlEAJGnMXZ53HMSNi8kgXazltsptZNrxqt9w7hNVvuHcLi8tRWscYTPLIWHypqG4ZSaMj5i4iuBDtoogA155A29SbIa6rOWQuqACWSmJ2F0jXBtOCJad25s+c2c315Zbg3VR2jVb7m9wmq33DuFyyrpnHCs072zSSuY8v8vFTyxNfK20Tgz5JGXINjcEEei+2LeF6CIxaNMGuklDCXurNm5Ty+IN0HTdVvuHcKdRvUdwuXT+GKZsU8pjDjC1xY1s1bG1zsoIzFspPYevqtG6mgFy6maA0guIrcUNmNOWcgX3s8gDr62QduzDqO6XXD/LwtcA+ANIJa/8AOYoQ0xgmoAOb9rcpHuubLCgpoZZ6eGWEN1Xsjk06/FC5rnguaG3eB8ljc9bWQd0UXXM8awxuHwT+SDw+RsTxqVE0pzNlaCc0j7jhfyvZaaatrP2uqALeppXb5R/me6/8LNzxnq1vHx55TeMt+OzItJ4LfI6hp3S/qOa4v++crdrUu2bLLqirHiNoMsd2h2VkxAO4/UgB2+zirOqjjgkdMcrHyBms2zcosHaBaOYuLtdv9kR88PbZtRysaph2NxbM0D+y2eewaSbD4drvDRsN1pqhszIZTGx8Za4SAT5Q2QttZrni+VtzzG/CtT+PyzxDUpw0skAYxpJL48vzk8hy5cwgvEZ3fy+b09OEc9/uqH4aZUeXYWPpAwamXUpql8+USzbGRsgaeIy26A79V7ZfFlQ3JkpA7O4BwLntLB7uRFtlq8DxmKnp/iRVl26jDp0jn5gZZi0gfPb4vT06KCxVUddldnfTZducNSd7i1/j9bKhVQo2yTa4aXalQJTFT4sWFzQ0zmwqLW4m8tt9lcJ/F8UkZAgqxmH/AKsl+xsqBW4ewzSzg1TTNUNqQPw2qe5kjCTEeGSxylzvSxvv6KjY1DYSS0NAkvKXZ6bF8ubRbqcqkb6eX/pS2KIZbsbmvDu2nxYcWmQy35r2A/Yc14KOkYzeIVDQ2IwAPwyrPws2drOOTcCQudfmb2vbZemWMkEuMrhY5mnC5zma45phlEn7ngH6cuSC1QCURU+9OKXTh02xQ1EcoZpN0/1JDYBlhY73HPrqPGMEJrZzFGzNmpPNOlirH56wsIw98ZYcuRp+e3pcWcTtsoMfEkULC2qLmCFpklpXQML2hrS/T5sBdv0APOwuvl4ipZKmoL2mmMcLWQU3xqyJ/l5mZazUDDbNb5LfS9yp2vSseUaSQYYSc1UBanxA8bYx+L+u4eLiMj7cJVo8AR07Xz5YiyYspXNe2KpjZ5Dh8rG4ymzpGtHER3NiVqneH5NwPK2N2nNUYgTkpGf+N5HY5hx29NxYrfeGdSm1WzGnEcpZVHSdVyv87IQaiweLCO44QPpzJJS8GPLy+CopTSwPDqZoEIY0uoZ5J8ofLYOqGyhpALpdrDLn353NjqaOqc0tM0XEQGkwTOaHEjKXN8zvvZVTwzi7KWkjEtPW5mtDPh0ocSM8hHDcSf4h2IsLbc7ndv8AGDCAfL1pF2usKJwJsQbbybclUU+u8rrSmeFklQ6V2eRmG4oY3SCQi7fzNjxh1rWHSyl4pyHNZC0Wa8vDsMxB4LDLxi3mxe77G3rz5brWV+GxOlkltWtE0s8uQYTLKWunFpgXa3qw5fQWFxY7r70cAjzvhFcwvEYv+D7gw7QENfNYhkfCPQ8zc7oNhKIASXQjiM+c/htScxc34xuav91h/q5blbXG4qgUTna0Wm6OJ0cIpHxPY4GLIXuMzuW122vtz9VXnxlvE1lfw3LA3CYnFtgdHLmqNywkkdbnNcLc1OKSS0IgZR1zckLGsMkMUWa2QZRGJXOYSQdjyBNyAFBvcajqmaWtUQSudJaPToHtLXWNnb1YsP5WAgrbPeJo2sY0l4fSSODuRBAbW+gB9V4MU8QNe+INw6viMbtQFlPSyNcACA0lk9h3SbxRdksT6GucyZhY78vC0gEWtvUbixP/AAg8EdYwNbZgYAxps7C5m2YJtm2NZsQ7i+g35LGScOzXbduR12/hExc5urctB85uS7itbluvH5tv7qTEXEAgu8hS2c5xAe7ae27AG2+l+anzAvtTVwPDlPkqI5XM+R39RuQ3Yen87oNnQTh1SxrC1kpnlySOwuQMbKQM0hd5vk7ax9bfRWuninbPGKmWOdxa8tdFAadrW2OxaZH39d7jmP5olHURwzwyikr3COXM1opKQDL+xmfzHDlueI877q30uOMqJmOfDNThjXXE7YzmsQQWuic4cyNiQdilaxUN9LAbuZSSspyyV0cJoJRKzD2vPm6Uu1P1ZH2cw82gndt7KIqUjKNA6gdA3OMNkYwVTm/kJwC7hZCzhePQ7EPJutu/AKmR5nf5B073ebe5v4hkNdAXCke1t7BgY43Fud732WDfC0jQ1lqLTaBCN8Sv5eoaTXgXPzF54L32vc3sqy9FVJDFgUr6eB8GkZHObJC+AOqWPBkkETiSGOcDYX2G21rKwY3HVRtiM88EpMzWs06GVpDyDv8A1YtsD69NlpcXpZ3YPLRu03zCM00LaWOoLNBpAhbeTe4a0XJPpuTzXpxTGmPcwDDq+J7X6uZtLTytcOLhLo5rDdxNr/xuot6eiSGqc2Yh7Gxsje6dr6WaXOLX4WMrASbNdy6rWtnF25Xxjig+bC8T+YxnTN/NbANuD09V6J/EZyzMNHXubURujdajbdl2kXIM1iOI7fZaN+Jw5iH0uJG7uO2Fmzs4+NxNm/eQDcfLbZEe+KqsWkPhIDY3AfhmLNdYSFsY/qeeYna3LfksqSqY2aEAw6jn6UBNJibWtcJCOIvnLSM99/qF4zNG47w1t+IknDWi7ntyyHao2uzht6cxYr5iWCOaGUsrgIpIpC1uFyOL9G4iGZspDbMdl5b8zcoL9RRVLZWOq308jyHtjNPFJCGs2LgQ+R17nLy6LaCAC3FJtb/Fk9P5Wiw3Gm10rHQxzxiJsmYVELoJHEuitla7mLZ9+tlYM3/y7/aVRtKL5P5K+68mF30wTc3c87i22Y2C9aAoIUogjKOgUBg6DsFkiCMo6Dso0x0HYLJEGOm3oOwTIOg7BZIgxyDoOwTIOg7LJEGOQdB2TTHQdgskQY5B0HZMg6DsskQRlHQdkyjoFKIIyjoEyjopRBGUdEyjoOylEGOQdB2TIOg7LJEEZR0CWClEEWSylECyiylEEZR0SylECyWREEZR0HZRkHQdgskQRlHQJYKUQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERB//2Q=='>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>Intel Xeon Platinum 8358 processor: 2.6 GHz, 32 cores, 250 watts, XCC, 48
+                                            MB cache </label><br>
+
+                                        <h2>Memory</h2>
+
+                                        <label>64 GB DDR4-3200 registered DIMM
+                                        </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Twelve 3.5-inch hot-plug drive bays
+                                            3.84 TB or 6.8 TB NVMe SSDs
+                                            18 TB SAS-3 HDDs</label><br>
+
+                                        <h2>Ethernet</h2>
+
+                                        <label>Four integrated 10GBase-T ports3
+                                            One integrated Ethernet controller</label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='m()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.48,000</p></section>
+                                <button onclick='addtocart(13)' id='atc'>ADD TO CART</button>
+                            </div>
+                            <div>
+                                <h1>Oracle's SPARC T8 and SPARC M8 </h1>
+                                <img
+                                    src='https://ccnytech.com/wp-content/uploads/2016/08/Sun-Sparc-T4-1-1-5-1-2-2-3-1-3-1-1.jpg'>
+                                <section class='specification'>
+
+                                    <section id='details'>
+                                        <h2>Processor</h2>
+
+                                        <label>32-core 5.0 GHz SPARC M8 processor, 64 MB level 3 shared
+                                            cache</label><br>
+                                        <h2>Memory</h2>
+
+                                        <label>32 GB, 64 GB, or 128 GB DDR4-2400 memory DIMMs </label><br>
+
+                                        <h2>Hard Drive</h2>
+
+                                        <label>Up to 10 SFF SAS/SATA HDDs or SATA/SAS/NVMe U.2 or U.3 SDDs, depending on
+                                            model </label><br>
+
+                                        <h2>Ethernet</h2>
+
+                                        <label>Four integrated 10GBase-T ports3
+                                            One integrated Ethernet controller</label><br>
+                                    </section>
+
+
+                                </section>
+                                <button onclick='n()'>REQUEST</button>
+                                <section class="price2" id="pri2"><p>Rs.48,000</p></section>
+                                <button onclick='addtocart(14)' id='atc'>ADD TO CART</button>
+
+
+                            </div>
+
+                        </div>
+                    </section>
+                </section>
+                <section class='request' id='requesting'>
+                    <div class='title' id='header'>
+
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <h2>DATE OF REQUEST</h2>
+
+                    </div>
+
+                </section>
+                <section class='request' id='his'>
+                    <div class='title' id='header'>
+
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <h2>DATE OF REQUEST</h2>
+                        <h2>ACTION</h2>
+
+                    </div>
+
+                </section>
+                <section class='request' id='pending'>
+                    <div class='title' id='header'>
+
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <h2>DATE OF REQUEST</h2>
+
+                    </div>
+
+                </section>
+
+                <section class='request' id='cart'>
+                    <button id='cartrequest' onclick='cartjson()'>
+                        REQUEST
+                    </button>
+
+                    <div class='title' id='header'>
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <h2>DATE OF REQUEST</h2>
+
+
+                    </div>
+
+                </section>
+            </div>
+        </section>
+    </section>
+    
+</body>
+
+<script>
+
+    // ---------------------------------------------------------------------cookies------------------------------------------------
+    
+    function decodeCookieValue(cookieValue) {
+            return decodeURIComponent(cookieValue.replace(/\+/g, ' '));
+        }
+
+        // Retrieve the user information from the cookie using JavaScript
+        function getUserInfo() {
+            var cookies = document.cookie.split(';');
+            var userInfo = null;
+
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith("user=")) {
+                    var cookieValue = cookie.substring("user=".length);
+                    var decodedCookieValue = decodeCookieValue(cookieValue);
+                    try {
+                        userInfo = JSON.parse(decodedCookieValue);
+                    } catch (error) {
+                        console.error("Error parsing JSON:", error);
+                    }
+                    break;
+                }
+            }
+
+            return userInfo;
+        }
+
+        // Update the page with the user information
+        function updatePage() {
+            var user = getUserInfo();
+            let userID;
+            if (user) {
+                document.getElementById("welcomeuser").textContent = "Welcome, " + user.name + "!";
+                userID=user.userId;
+            } else {
+                // Redirect to the login page if user information is not available
+                window.location.href = "landingPage.html";
+            }
+            return userID;
+        }
+
+
+        function Name() {
+            var use = getUserInfo();
+            let peru;
+            if (use) {
+                // document.getElementById("welcomeuser").textContent = "Welcome, " + user.name + "!";
+                peru=use.name;
+            } 
+            return peru;
+        }
+
+let uname=Name();
+console.log(uname)
+
+        let useridValue = updatePage();
+
+function a() {
+        let pro;
+        let me;
+        let hd;
+        let mb;
+
+        var pro1 = document.getElementById('delpro1');
+        var pro2 = document.getElementById('delpro2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            pro = 'E-2334'
+        }
+        else if (pro2.checked == true) {
+            pro = 'E-2336'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('delme1');
+        var pro2 = document.getElementById('delme2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            me = '8GB'
+        }
+        else if (pro2.checked == true) {
+            me = '16GB'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('delhd1');
+        var pro2 = document.getElementById('delhd2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            hd = '8TB'
+        }
+        else if (pro2.checked == true) {
+            hd = '16TB'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('delmb1');
+        var pro2 = document.getElementById('delmb2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            mb = 'LOM'
+        }
+        else if (pro2.checked == true) {
+            mb = 'LOM, V2'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+
+
+        if (pro != null && me != null && hd != null && mb != null) {
+            let obj = {
+                id: useridValue,
+                modelNO: 1,
+                name: uname,
+                company: 'Dell',
+                model: 'R250',
+                processor: pro,
+                memory: me,
+                harddrive: hd,
+                additional: mb,
+            };
+            console.log(JSON.stringify(obj));
+            let formData = new FormData();
+            formData.append('requestData', JSON.stringify(obj))
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'planValue');
+            xhr.onload = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('success')
+                }
+                else {
+                    console.log('failure');
+                }
+            };
+
+            xhr.send(formData);
+
+
+        }
+    }
+    function b() {
+        let pro;
+        let me;
+        let hd;
+        let mb;
+
+        var pro1 = document.getElementById('del2pro1');
+        var pro2 = document.getElementById('del2pro2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            pro = '8351N'
+        }
+        else if (pro2.checked == true) {
+            pro = '8352Y'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del2me1');
+        var pro2 = document.getElementById('del2me2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            me = '32GB'
+        }
+        else if (pro2.checked == true) {
+            me = '64GB'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del2hd1');
+        var pro2 = document.getElementById('del2hd2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            hd = '960GB'
+        }
+        else if (pro2.checked == true) {
+            hd = '1.6TB'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del2mb1');
+        var pro2 = document.getElementById('del2mb2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            mb = 'R750 Motherboard'
+        }
+        else if (pro2.checked == true) {
+            mb = 'R250 Motherboard'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+
+
+        if (pro != null && me != null && hd != null && mb != null) {
+            let obj = {
+                id: useridValue,
+                modelNO: 2,
+                name: uname,
+                company: 'Dell',
+                model: 'R750',
+                processor: pro,
+                memory: me,
+                harddrive: hd,
+                additional: mb,
+            };
+            console.log(JSON.stringify(obj));
+            let formData = new FormData();
+            formData.append('requestData', JSON.stringify(obj))
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'planValue');
+            xhr.onload = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('success')
+                }
+                else {
+                    console.log('failure');
+                }
+            };
+
+            xhr.send(formData);
+
+
+        }
+    }
+    function c() {
+        let pro;
+        let me;
+        let hd;
+        let mb;
+
+        var pro1 = document.getElementById('del3pro1');
+        var pro2 = document.getElementById('del3pro2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            pro = 'G6405T'
+        }
+        else if (pro2.checked == true) {
+            pro = 'G6505'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del3me1');
+        var pro2 = document.getElementById('del3me2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            me = '8GB UDIMM'
+        }
+        else if (pro2.checked == true) {
+            me = '16GB UDIMM'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del3hd1');
+        var pro2 = document.getElementById('del3hd2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            hd = '480GB SSD'
+        }
+        else if (pro2.checked == true) {
+            hd = '1.92TB SSD'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del3mb1');
+        var pro2 = document.getElementById('del3mb2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            mb = 'Broadcom 5719'
+        }
+        else if (pro2.checked == true) {
+            mb = 'Ethernet i350'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+
+
+        if (pro != null && me != null && hd != null && mb != null) {
+            let obj = {
+                id: useridValue,
+                modelNO: 3,
+                name: uname,
+                company: 'Dell',
+                model: 'T150',
+                processor: pro,
+                memory: me,
+                harddrive: hd,
+                additional: mb,
+            };
+            console.log(JSON.stringify(obj));
+            let formData = new FormData();
+            formData.append('requestData', JSON.stringify(obj))
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'planValue');
+            xhr.onload = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('success')
+                }
+                else {
+                    console.log('failure');
+                }
+            };
+
+            xhr.send(formData);
+
+
+        }
+    }
+    function d() {
+        let pro;
+        let me;
+        let hd;
+        let mb;
+
+        var pro1 = document.getElementById('del4pro1');
+        var pro2 = document.getElementById('del4pro2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            pro = 'Gold 5215'
+        }
+        else if (pro2.checked == true) {
+            pro = 'Silver 4210R'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del4me1');
+        var pro2 = document.getElementById('del4me2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            me = '64GB RDIMM'
+        }
+        else if (pro2.checked == true) {
+            me = '32GB RDIMM'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del4hd1');
+        var pro2 = document.getElementById('del4hd2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            hd = '1.6TB SSD'
+        }
+        else if (pro2.checked == true) {
+            hd = '1.92TB SSD'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+        var pro1 = document.getElementById('del4mb1');
+        var pro2 = document.getElementById('del4mb2');
+        if (pro1.checked == true && pro2.checked == true) {
+            alert('Please mark only one checkbox either Yes or No');
+        }
+        else if (pro1.checked == true) {
+            mb = 'Broadcom 5719'
+        }
+        else if (pro2.checked == true) {
+            mb = 'Ethernet i350'
+        }
+        else {
+            alert('Please mark any of checkbox');
+        }
+
+
+        if (pro != null && me != null && hd != null && mb != null) {
+            let obj = {
+                id: useridValue,
+                modelNO: 4,
+                name: uname,
+                company: 'Dell',
+                model: 'T440',
+                processor: pro,
+                memory: me,
+                harddrive: hd,
+                additional: mb,
+            };
+            console.log(JSON.stringify(obj));
+            let formData = new FormData();
+            formData.append('requestData', JSON.stringify(obj))
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'planValue');
+            xhr.onload = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('success')
+                }
+                else {
+                    console.log('failure');
+                }
+            };
+
+            xhr.send(formData);
+
+
+        }
+    }
+    function e() {
+        let obj = {
+            id: useridValue,
+            modelNO: 5,
+            name: uname,
+            company: 'HP',
+            model: 'Flex 280',
+            processor: 'Intel Gold',
+            memory: 'DDR4',
+            harddrive: '4.8TB',
+            additional: '10/25/40/100 GbE network',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+    }
+    function f() {
+        let obj = {
+            id: useridValue,
+            modelNO: 6,
+            name: uname,
+            company: 'HP',
+            model: 'DL320',
+            processor: '4th Gen Intel',
+            memory: '128 GB DDR5',
+            harddrive: '4 LFF',
+            additional: 'UEFI Secure Boot',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+    }
+    function g() {
+        let obj = {
+            id: useridValue,
+            modelNO: 7,
+            name: uname,
+            company: 'HP',
+            model: 'DL325  ',
+            processor: '3rd Gen',
+            memory: '256 GB DDR4',
+            harddrive: '4 LFF SAS/SATA',
+            additional: 'PCIe Network adapters',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+    }
+    function h() {
+        let obj = {
+            id: useridValue,
+            modelNO: 8,
+            name: uname,
+            company: 'HP',
+            model: 'DL360 ',
+            processor: '8300 series',
+            memory: '512GB Persistent',
+            harddrive: '10 SFF SAS/SATA',
+            additional: 'Wide range of speeds',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+    }
+    function i() {
+        let obj = {
+            id: useridValue,
+            modelNO: 9,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR650 V3 ',
+            processor: '4th Gen ',
+            memory: '32x TruDDR5',
+            harddrive: '12x PCIe 4.0/5.0',
+            additional: 'OCP 3.0 slot',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+    }
+    function j() {
+
+        let obj = {
+            id: useridValue,
+            modelNO: 10,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR650 Rack ',
+            processor: '2nd Gen Intel',
+            memory: '128GB DIMMs',
+            harddrive: '24. 2.5 hot-swap',
+            additional: '2/4-port 10GbE LOM',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+
+    }
+    function k() {
+
+
+        let obj = {
+            id: useridValue,
+            modelNO: 11,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SE450 ',
+            processor: '1x 3rd Gen',
+            memory: '128GB RDIMMs',
+            harddrive: '2.5-inch 7mm drives',
+            additional: 'OCP 3.0 slot',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+
+
+
+    }
+    function l() {
+        let obj = {
+            id: useridValue,
+            modelNO: 12,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR850',
+            processor: '4th Gen Intel',
+            memory: '6.0 TB',
+            harddrive: '10 SFF SAS/SATA',
+            additional: 'Wide range of speeds',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+    }
+    function m() {
+        let obj = {
+            id: useridValue,
+            modelNO: 13,
+            name: uname,
+            company: 'Oracle',
+            model: 'X9-2L ',
+            processor: 'Platinum 8358',
+            memory: '64 GB DDR4-3200',
+            harddrive: '6.8 TB NVMe SSDs',
+            additional: '10GBase-T ports3',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+    }
+    function n() {
+        let obj = {
+            id: useridValue,
+            modelNO: 14,
+            name: uname,
+            company: 'Oracle',
+            model: 'SPARC T8,M8 ',
+            processor: '32-core Intel',
+            memory: '128 GB DDR4-2400',
+            harddrive: '10 SFF SAS/SATA ',
+            additional: '10GBase-T ports3',
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('requestData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'planValue');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+    }
+    function dell() {
+        let del = document.getElementById('dell');
+        let hp = document.getElementById('hp');
+        let len = document.getElementById('len');
+        let ora = document.getElementById('ora');
+        del.style.display = 'block';
+        hp.style.display = 'none';
+        len.style.display = 'none';
+        ora.style.display = 'none';
+
+    }
+    function hp() {
+        let del = document.getElementById('dell');
+        let hp = document.getElementById('hp');
+        let len = document.getElementById('len');
+        let ora = document.getElementById('ora');
+        del.style.display = 'none';
+        hp.style.display = 'block';
+        len.style.display = 'none';
+        ora.style.display = 'none';
+
+    }
+    function len() {
+        let del = document.getElementById('dell');
+        let hp = document.getElementById('hp');
+        let len = document.getElementById('len');
+        let ora = document.getElementById('ora');
+        del.style.display = 'none';
+        hp.style.display = 'none';
+        len.style.display = 'block';
+        ora.style.display = 'none';
+
+    }
+    function ora() {
+        let del = document.getElementById('dell');
+        let hp = document.getElementById('hp');
+        let len = document.getElementById('len');
+        let ora = document.getElementById('ora');
+        del.style.display = 'none';
+        hp.style.display = 'none';
+        len.style.display = 'none';
+        ora.style.display = 'block';
+
+    }
+
+    function companyopt() {
+        let co = document.getElementById('co')
+        co.style.height = '150px';
+        co.style.visibility = 'visible';
+        co.style.transition = '1s';
+    }
+
+
+
+
+    let variable = document.getElementById('requesting');
+    let his = document.getElementById('his');
+    let pen = document.getElementById('pending');
+    fetch('http://localhost:8181/ServerManagement/requestAdmin')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(post => {
+                // -------------------------------------------------------------------------------changees-------------------------
+                if (post.UID == useridValue && post.Status == 'R') {
+                    variable.insertAdjacentHTML('beforeend', `<div class='title' id='${post.ID}'>
+
+            
+                    <div><p>${post.Company}</p></div>
+                    <div>  <p>${post.ModelNo}</p></div>
+                    <div><p>${post.Model}</p></div>
+                    <div><p>${post.Processor}</p></div>
+                    <div> <p>${post.DateofRequest}</p></div>
+                   
+                    
+                   </div>`)
+                }
+
+                else if (post.UID == useridValue && post.Status == 'A') {
+                    his.insertAdjacentHTML('beforeend', `<div class='title' id='${post.ID}a'>
+
+            
+                    <div><p>${post.Company}</p></div>
+                   <div>  <p>${post.ModelNo}</p></div>
+                   <div><p>${post.Model}</p></div>
+                <div><p>${post.Processor}</p></div>
+                    <div> <p>${post.DateofRequest}</p></div>
+                    <div><button class='returnbutton' onclick='returnOrder(\"${post.Quantity}-${post.ID}-${post.ModelNo}\")'>RETURN</button></div>
+
+
+</div>`)
+                }
+                else if (post.UID == useridValue && post.Status == 'P') {
+                    pen.insertAdjacentHTML('beforeend', `<div class='title' id='${post.ID}'>
+
+            
+                    <div><p>${post.Company}</p></div>
+                   <div>  <p>${post.ModelNo}</p></div>
+                   <div><p>${post.Model}</p></div>
+                <div><p>${post.Processor}</p></div>
+                    <div> <p>${post.DateofRequest}</p></div>
+
+
+</div>`)
+                }
+            })
+        })
+
+
+
+    function status() {
+        let re = document.getElementById('inventory');
+        let r = document.getElementById('requesting');
+        let his = document.getElementById('his');
+        let car = document.getElementById('cart');
+        let pen = document.getElementById('pending');
+        pen.style.display = 'none'
+        car.style.display = 'none';
+        re.style.display = 'none';
+        r.style.display = 'flex';
+        his.style.display = 'none';
+    }
+    function inven() {
+        let re = document.getElementById('inventory');
+        let r = document.getElementById('requesting');
+        let his = document.getElementById('his');
+        let car = document.getElementById('cart');
+        let pen = document.getElementById('pending');
+        pen.style.display = 'none'
+        car.style.display = 'none';
+        re.style.display = 'flex';
+        r.style.display = 'none';
+        his.style.display = 'none';
+    }
+    function history() {
+        let re = document.getElementById('inventory');
+        let r = document.getElementById('requesting');
+        let his = document.getElementById('his');
+        let car = document.getElementById('cart');
+        let pen = document.getElementById('pending');
+        pen.style.display = 'none'
+        car.style.display = 'none';
+        re.style.display = 'none';
+        r.style.display = 'none';
+        his.style.display = 'flex';
+        
+    }
+    function car() {
+        let re = document.getElementById('inventory');
+        let r = document.getElementById('requesting');
+        let his = document.getElementById('his');
+        let car = document.getElementById('cart');
+        let pen = document.getElementById('pending');
+        pen.style.display = 'none'
+        car.style.display = 'flex';
+        re.style.display = 'none';
+        r.style.display = 'none';
+        his.style.display = 'none';
+    }
+    function pending() {
+        let re = document.getElementById('inventory');
+        let r = document.getElementById('requesting');
+        let his = document.getElementById('his');
+        let car = document.getElementById('cart');
+        let pen = document.getElementById('pending');
+        pen.style.display = 'flex'
+        car.style.display = 'none';
+        re.style.display = 'none';
+        r.style.display = 'none';
+        his.style.display = 'none';
+    }
+
+
+
+
+    let selectedItem = [
+        {
+            id: useridValue,
+            modelNO: 5,
+            name: uname,
+            company: 'HP',
+            model: 'Flex 280',
+            processor: 'Intel Gold',
+            memory: 'DDR4',
+            harddrive: '4.8TB',
+            additional: '10/25/40/100 GbE network',
+        },
+        {
+            id: useridValue,
+            modelNO: 6,
+            name: uname,
+            company: 'HP',
+            model: 'DL320',
+            processor: '4th Gen Intel',
+            memory: '128 GB DDR5',
+            harddrive: '4 LFF',
+            additional: 'UEFI Secure Boot',
+        },
+        {
+            id: useridValue,
+            modelNO: 7,
+            name: uname,
+            company: 'HP',
+            model: 'DL325',
+            processor: '3rd Gen',
+            memory: '256 GB DDR4',
+            harddrive: '4 LFF SAS/SATA',
+            additional: 'PCIe Network adapters',
+        },
+        {
+            id: useridValue,
+            modelNO: 8,
+            name: uname,
+            company: 'HP',
+            model: 'DL360',
+            processor: '8300 series',
+            memory: '512GB Persistent',
+            harddrive: '10 SFF SAS/SATA',
+            additional: 'Wide range of speeds',
+        },
+        {
+            id: useridValue,
+            modelNO: 9,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR650 V3',
+            processor: '4th Gen',
+            memory: '32x TruDDR5',
+            harddrive: '12x PCIe 4.0/5.0',
+            additional: 'OCP 3.0 slot',
+        },
+        {
+            id: useridValue,
+            modelNO: 10,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR650 Rack',
+            processor: '2nd Gen Intel',
+            memory: '128GB DIMMs',
+            harddrive: '24. 2.5 hot-swap',
+            additional: '2/4-port 10GbE LOM',
+        },
+        {
+            id: useridValue,
+            modelNO: 11,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SE450',
+            processor: '1x 3rd Gen',
+            memory: '128GB RDIMMs',
+            harddrive: '2.5-inch 7mm drives',
+            additional: 'OCP 3.0 slot',
+        },
+        {
+            id: useridValue,
+            modelNO: 12,
+            name: uname,
+            company: 'Lenovo',
+            model: 'SR850',
+            processor: '4th Gen Intel',
+            memory: '6.0 TB',
+            harddrive: '10 SFF SAS/SATA',
+            additional: 'Wide range of speeds',
+        },
+        {
+            id: useridValue,
+            modelNO: 13,
+            name: uname,
+            company: 'Oracle',
+            model: 'X9-2L',
+            processor: 'Platinum 8358',
+            memory: '64 GB DDR4-3200',
+            harddrive: '6.8 TB NVMe SSDs',
+            additional: '10GBase-T ports3',
+        },
+        {
+            id: useridValue,
+            modelNO: 14,
+            name: uname,
+            company: 'Oracle',
+            model: 'SPARC T8,M8',
+            processor: '32-core Intel',
+            memory: '128 GB DDR4-2400',
+            harddrive: '10 SFF SAS/SATA',
+            additional: '10GBase-T ports3',
+        }
+    ];
+
+    let selectedItems = [];
+
+    function addtocart(productId) {
+        const product = selectedItem.find(item => item.modelNO === productId);
+
+        if (product) {
+            selectedItems.push(product);
+        }
+
+        const cartElement = document.getElementById('cart');
+
+        //   cartElement.innerHTML = ''; // Clear previous content before adding items
+        let element;
+        selectedItems.forEach((obj) => {
+            element = document.createElement('div');
+            element.classList.add('title');
+            element.id = obj.id;
+
+            element.innerHTML = `
+      <div><p>${obj.company}</p></div>
+      <div><p>${obj.modelNO}</p></div>
+      <div><p>${obj.model}</p></div>
+      <div><p>${obj.processor}</p></div>
+      <div><p>${obj.harddrive}</p></div>
+    `;
+
+
+        });
+        cartElement.appendChild(element);
+    }
+    function cartjson() {
+        let ob = {
+            Cart: selectedItems,
+        };
+  console.log(ob)
+        let formData = new FormData();
+        formData.append('CData', JSON.stringify(ob))
+        let api = new XMLHttpRequest();
+        api.open('POST', 'Cart');
+        api.onload = () => {
+            if (api.readyState == 4 && api.status == 200) {
+                console.log('success')
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        api.send(formData);
+    }
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chatContainer');
+    const minimizeButton = document.getElementById('minimize-button');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('conversation-group');
+    const sendButton = document.getElementById('SentButton');
+
+    if (chatButton) {
+        chatButton.addEventListener('click', function () {
+            if (chatContainer) {
+                chatContainer.classList.add('open');
+                chatButton.classList.add('clicked');
+            }
+        });
+    }
+
+    if (minimizeButton) {
+        minimizeButton.addEventListener('click', function () {
+            if (chatContainer) {
+                chatContainer.classList.remove('open');
+                chatButton.classList.remove('clicked');
+            }
+        });
+    }
+
+    function createMessage(message, isUser = true) {
+        const newMessage = document.createElement('div');
+        newMessage.classList.add(isUser ? 'sentText' : 'botText');
+        newMessage.textContent = message;
+        chatMessages.appendChild(newMessage);
+        return newMessage;
+    }
+
+    function chatbotResponse() {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8181/ServerManagement/chat', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+
+                var botResponse = xhr.responseText;
+                const message = botResponse;
+                const botMessage = createMessage(message, false);
+                botMessage.scrollIntoView();
+            }
+        };
+        xhr.send('userInput=' + chatInput);
+
+        
+
+
+    }
+
+    chatInput.addEventListener('input', function (event) {
+        if (event.target.value) {
+            sendButton.classList.add('svgsent');
+        } else {
+            sendButton.classList.remove('svgsent');
+        }
+    });
+
+    chatInput.addEventListener('keypress', function (event) {
+        if (event.keyCode === 13) {
+            const message = chatInput.value;
+            chatInput.value = '';
+            const userMessage = createMessage(message);
+            userMessage.scrollIntoView();
+            setTimeout(chatbotResponse, 1000);
+            sendButton.classList.add('svgsent');
+        }
+    });
+
+    if (sendButton) {
+        sendButton.addEventListener('click', function () {
+            const message = chatInput.value;
+            chatInput.value = '';
+            const userMessage = createMessage(message);
+            userMessage.scrollIntoView();
+            setTimeout(chatbotResponse, 1000);
+            sendButton.classList.add('svgsent');
+        });
+    }
+
+
+    function returnOrder(a) {
+
+        var numbers = a.split('-');
+
+        var num1 = parseInt(numbers[0]);
+        var num2 = parseInt(numbers[1]);
+        var num3 = parseInt(numbers[2]);
+        
+        let obj = {
+            Quantity:num1,
+            OrderID:num2,
+            ModelNo:num3
+        };
+        console.log(JSON.stringify(obj));
+        let formData = new FormData();
+        formData.append('returnData', JSON.stringify(obj))
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'Return');
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success')
+                let ijk=document.getElementById(String(num2)+'a');
+                ijk.style.display="none"
+            }
+            else {
+                console.log('failure');
+            }
+        };
+
+        xhr.send(formData);
+        // console.log(a);
+    }
+    function zindex() {
+        console.log('Function called');
+        const dE = document.getElementById('fc');
+        console.log(dE);
+        dE.style.zIndex = '2526';
+    }
+    function mini() {
+        const dE = document.getElementById('fc');
+        dE.style.zIndex = '0';
+    }
+    
+
+    function logout() {
+        // Make an AJAX request to the logout servlet URL
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "logout", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Redirect to the landing page after logout
+                window.location.href = "landingPage.html";
+            }
+        };
+        xhr.send();
+    }
+
+
+
+
+    let us = document.getElementById('balance');
+    const xh = new XMLHttpRequest();
+    xh.open('get', 'http://localhost:8181/ServerManagement/UB');
+    xh.responseType = 'json';
+    xh.send();
+    xh.onload = () => {
+
+        xh.response.forEach(val => {
+            if(val.ID=useridValue){
+            us.innerText=val.balance
+            }
+        })
+    };
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <display-name>db</display-name>
+    <welcome-file-list>
+        <welcome-file>landingPage.html</welcome-file>
+        <!-- <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.htm</welcome-file> -->
+    </welcome-file-list>
+ 
+    <servlet>
+        <servlet-name>Hello</servlet-name>
+        <servlet-class>com.servlet.Hello</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Hello</servlet-name>
+        <url-pattern>/Hello</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>signin</servlet-name>
+        <servlet-class>com.servlet.signin</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>signin</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+
+
+<servlet>
+        <servlet-name>afterlogin</servlet-name>
+        <servlet-class>com.servlet.afterlogin</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>afterlogin</servlet-name>
+        <url-pattern>/afterlogin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>planValue</servlet-name>
+        <servlet-class>com.servlet.PlanValue</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>planValue</servlet-name>
+        <url-pattern>/planValue</url-pattern>
+    </servlet-mapping>
+
+     <servlet>
+        <servlet-name>requestAdmin</servlet-name>
+        <servlet-class>com.servlet.RequestSuperAdmin</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>requestAdmin</servlet-name>
+        <url-pattern>/requestAdmin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>com.servlet.Delete</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <servlet-name>users</servlet-name>
+        <servlet-class>com.servlet.UserData</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>users</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+        <servlet>
+        <servlet-name>Deny</servlet-name>
+        <servlet-class>com.servlet.DenyData</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Deny</servlet-name>
+        <url-pattern>/Deny</url-pattern>
+    </servlet-mapping>
+
+         <servlet>
+        <servlet-name>FetchDeny</servlet-name>
+        <servlet-class>com.servlet.FetchDeny</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>FetchDeny</servlet-name>
+        <url-pattern>/FetchDeny</url-pattern>
+    </servlet-mapping>
+
+         <servlet>
+        <servlet-name>BlockUsers</servlet-name>
+        <servlet-class>com.servlet.BlockUsers</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>BlockUsers</servlet-name>
+        <url-pattern>/BlockUsers</url-pattern>
+    </servlet-mapping>
+
+  
+
+         <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>com.servlet.AdminSignIn</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+     <servlet>
+        <servlet-name>demand</servlet-name>
+        <servlet-class>com.servlet.DemandServer</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>demand</servlet-name>
+        <url-pattern>/demand</url-pattern>
+    </servlet-mapping>
+
+         <servlet>
+        <servlet-name>remain</servlet-name>
+        <servlet-class>com.servlet.ServerRemaning</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>remain</servlet-name>
+        <url-pattern>/remain</url-pattern>
+    </servlet-mapping>
+
+
+         <servlet>
+        <servlet-name>mail</servlet-name>
+        <servlet-class>com.servlet.Mail</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>mail</servlet-name>
+        <url-pattern>/mail</url-pattern>
+    </servlet-mapping>
+
+
+     <servlet>
+        <servlet-name>appcount</servlet-name>
+        <servlet-class>com.servlet.AllotedServerCount</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>appcount</servlet-name>
+        <url-pattern>/approvedcount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>chat</servlet-name>
+        <servlet-class>com.servlet.Chatbot</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>chat</servlet-name>
+        <url-pattern>/chat</url-pattern>
+    </servlet-mapping>
+
+ <servlet>
+        <servlet-name>Pending</servlet-name>
+        <servlet-class>com.servlet.Pending</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Pending</servlet-name>
+        <url-pattern>/Pending</url-pattern>
+    </servlet-mapping>
+
+
+ <servlet>
+        <servlet-name>Refilling</servlet-name>
+        <servlet-class>com.servlet.Refill</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Refilling</servlet-name>
+        <url-pattern>/Refilling</url-pattern>
+    </servlet-mapping>
+
+     <servlet>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>com.servlet.CartOrder</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/Cart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Return</servlet-name>
+        <servlet-class>com.servlet.Return</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>Return</servlet-name>
+        <url-pattern>/Return</url-pattern>
+    </servlet-mapping>
+
+<servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.servlet.LogoutServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+   
+
+   <servlet>
+        <servlet-name>UB</servlet-name>
+        <servlet-class>com.servlet.UserBalance</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>UB</servlet-name>
+        <url-pattern>/UB</url-pattern>
+    </servlet-mapping>
+
+
+
+   
+
+</web-app>

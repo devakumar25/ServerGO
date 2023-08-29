@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap' rel='stylesheet'>
+    <!-- <link rel="stylesheet" type="text/css" href="superadmin.css"> -->
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+    body {
+
+        overflow: hidden;
+    }
+
+    .topnav {
+        width: 100%;
+        height: 90px;
+        color: white;
+        background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .topnav h1 {
+        margin-left: 10px;
+    }
+
+    .topnav div {
+        margin-right: 10px;
+    }
+
+    .profile {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        border: 1px solid white;
+
+    }
+
+    .dashboard {
+        display: flex;
+        height: 1000px;
+    }
+
+    .leftnav {
+        width: 15%;
+        height: 1100px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+    }
+
+    .leftnav div {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        cursor:pointer;
+    }
+
+    .leftnav div:hover img {
+        filter: invert(100%);
+    }
+
+    .leftnav div:hover h2 {
+        color: white;
+
+    }
+
+    .leftnav div img {
+        width: 35px;
+        height: 35px;
+        margin-left: -50px;
+        filter: invert(80%);
+    }
+
+    .leftnav h2 {
+        margin-left: -75px;
+        color: lightgray;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .rightnav {
+        width: 85%;
+        height: 1100px;
+        position: relative;
+        padding: 30px;
+    }
+
+    .rightnav p {
+        font-size: 55px;
+        margin-top: 20px;
+    }
+
+    .content {
+        border: 0.2px solid transparent;
+        width: 100%;
+        height: 800px;
+        border-radius: 10px;
+        margin-top: 70px;
+        background-color: rgb(240, 242, 250);
+        box-shadow: 7px 7px 20px grey;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .content:hover::-webkit-scrollbar-thumb {
+        visibility: visible;
+    }
+
+    ::-webkit-scrollbar {
+        z-index: 0;
+        width: 8px;
+        border-radius: 12px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 12px;
+        z-index: 0;
+
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #9fc0d5;
+        z-index: 0;
+        border-radius: 12px;
+        border-right: none;
+        border-left: none;
+
+        visibility: hidden;
+    }
+
+    .content:hover::-webkit-scrollbar-thumb {
+        visibility: visible;
+        z-index: 0;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #F9F9F9;
+    }
+
+    #logout {
+        margin-top: 400px;
+    }
+
+    .request {
+        height: 800px;
+        width: 97%;
+        margin-top: 30px;
+        margin-left: 30px;
+        color: #636886;
+        position: absolute;
+    }
+
+    .request p {
+        margin-left: 20px;
+
+    }
+
+    .title {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .title div {
+        width: 10%;
+        margin-left: -90px;
+        text-align: center;
+        margin-top: 13px;
+    }
+
+    .title p {
+        font-size: 20px;
+    }
+
+    .title h1 {
+        font-size: 17px;
+        margin-top: 24px;
+    }
+
+
+    #header {
+        background-color: #7C96AB;
+        height: 52px;
+        padding-top: 20px;
+        color: white;
+        margin-top: -33px;
+        margin-left: -35px;
+        width: 104%;
+        z-index: 10;
+
+    }
+
+    #header h2 {
+        width: 10%;
+        margin-left: -90px;
+        text-align: center;
+
+    }
+
+    .approvebutton {
+
+        display: flex;
+        justify-content: space-evenly;
+
+
+    }
+    
+
+    button {
+        margin-left: 40px;
+        margin-top: 12px;
+        padding: 5px;
+        height: 30px;
+
+    }
+
+    #req {
+        visibility: hidden;
+    }
+
+    #his {
+        visibility: hidden;
+    }
+
+    #use,#rl {
+        visibility: hidden;
+    }
+
+    #den,#pen {
+        visibility: hidden;
+    }
+
+    .blockbutton {
+        margin-right: 50px;
+        margin-top: 25px;
+    }
+
+    .superprogress {
+        position: absolute;
+        right: 2%;
+    }
+
+    .section2 {
+        background-color: #93b0c7;
+        width: 400px;
+        height: 65px;
+        padding: 30px;
+        border-radius: 8px;
+        position: relative;
+
+        font-size: 20px;
+    }
+
+    .section2__progressBarContainer {
+        margin-top: 15px;
+        position: relative;
+    }
+
+    .section2__progressBar {
+        background-color: white;
+        width: 100%;
+        height: 15px;
+        padding: 2px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .section2__progressBarRect {
+        height: 100%;
+        padding: 2px;
+        margin-left: -2px;
+        border-radius: inherit;
+        animation: progressLineTransmission 2.5s 0.3s ease-in-out both;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #d3e6f1;
+    }
+
+    .section2__progressBarCircle {
+        background-color: #efefef;
+        height: 19px;
+        width: 19px;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    .section2__progressBarPoint {
+        color: white;
+        margin-top: 8px;
+        font-size: 12px;
+        position: absolute;
+    }
+
+    .section2__progressBarPoint--start {
+        left: 0;
+    }
+
+    .section2__progressBarPoint--end {
+        right: 0;
+    }
+
+    .section2__storageLeft {
+        background-color: #6989a1;
+        width: fit-content;
+        padding: 20px;
+        border-radius: 8px 8px 0px;
+        height: 15px;
+        /* flex */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        /* position */
+        position: absolute;
+        top: 12%;
+        right: 20px;
+        transform: translateY(-70%);
+
+    }
+
+    .section2__storageLeft::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border: solid 20px;
+        border-color: transparent #6989a1 transparent transparent;
+
+        /* position */
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateY(50%);
+
+    }
+
+    .section2__storageLeftDigits {
+        color: white;
+        font-size: 32px;
+
+    }
+
+    .section2__storageLeftText {
+        color: white;
+        margin-left: 7px;
+        letter-spacing: 1px;
+    }
+
+    .section2 p {
+        font-size: 17px;
+    }
+
+    .home {
+        height: 800px;
+        width: 97%;
+        margin-top: 30px;
+        margin-left: 30px;
+        color: #636886;
+        position: absolute;
+
+    }
+
+    .home h1 {
+        font-size: 36px;
+        font-weight: 100;
+    }
+
+    .home h2 {
+        margin-top: 0px;
+    }
+
+    .comp {
+        width: 100%;
+
+        height: 160px;
+        display: flex;
+        padding: 5px;
+        align-items: center;
+    }
+
+    .home h3 {
+        color: rgb(59, 57, 57);
+        font-size: 24px;
+        margin-top: 10px;
+        margin-left: 20px;
+        line-height: 1.4;
+        font-weight: 200;
+    }
+
+    .home p {
+        color: white;
+        font-size: 24px;
+
+        margin-top: 12px;
+        margin-left: 15px;
+    }
+
+    .comp div {
+        width: 22%;
+        margin-top: -55px;
+        height: 90px;
+        margin-right: 50px;
+        position: relative;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    }
+
+    .comp div section {
+
+        height: 45px;
+        width: 70px;
+        position: absolute;
+        right: -6%;
+        top: -12%;
+        border-radius: 5px;
+        background-color: rgb(124, 150, 171);
+        z-index: 200;
+    }
+
+select{
+  width: 400px;
+  max-width: 100%;
+  overflow-y: auto;
+  cursor: pointer;
+  padding: 15px 25px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #444;
+  font-size: 18px;
+  box-shadow: -3px 3px 5px 0px rgba(0,0,0,0.10);
+}
+select option{
+  padding: 10px 20px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background-color: rgb(238, 238, 238);
+  white-space: pre-wrap;
+  cursor: pointer;
+}
+select option:hover{
+  background-color: rgb(223, 223, 223);
+}
+select option:checked{
+  box-shadow: 0 0 10px 100px #595959 inset;
+}
+select::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+	border-radius: 12px;
+}
+
+select::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+select::-webkit-scrollbar-thumb
+{
+	background-color: rgb(225, 225, 225);
+	border-radius: 12px;
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(160, 160, 160, 0.2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(160, 160, 160, 0.2) 50%,
+											  rgba(160, 160, 160, 0.2) 75%,
+											  transparent 75%,
+											  transparent)
+}
+select.fadeIn {
+  animation: fadeInDown 0.2s;
+}
+select.fadeOut{
+  animation: fadeInUp 0.2s;
+}
+
+#rl input{
+    width:385px;margin-top: 60px;
+    font-size: 24px;
+    padding: 5px;
+    border-radius: 5px;
+    outline:none;
+    border:none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+}
+#rl button{
+    margin-top: 60px; 
+    padding: 5px; 
+    font-size: 24px;
+    border-radius: 5px;
+    width:180px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+
+}
+#report{
+    visibility: hidden;
+    height: 800px;
+        width: 97%;
+        margin-top: 30px;
+        margin-left: 30px;
+        color: white;
+        position: absolute;
+}
+
+</style>
+
+<body>
+
+    <section class='dashboard'>
+        <section class='leftnav'>
+            <div onclick='home()'>
+                <img src=' https://cdn-icons-png.flaticon.com/512/1828/1828765.png '>
+                <h2>Home</h2>
+            </div>
+            <div onclick='requestFunction()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/1436/1436706.png'>
+                <h2>Request</h2>
+            </div>
+            <div onclick='user()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/681/681494.png'>
+                <h2>Users&nbsp;&nbsp;</h2>
+            </div>
+            <div onclick='approveFunction()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/9450/9450893.png'>
+                <h2>Granted</h2>
+            </div>
+            <div onclick='denyFunction()'>
+                <img src='https://cdn-icons-png.flaticon.com/512/2623/2623031.png'>
+                <h2>Denied&nbsp; </h2>
+            </div>
+            <div onclick="pending()">
+                <img src='   https://cdn-icons-png.flaticon.com/512/3602/3602500.png '>
+                <h2>Pending</h2>
+            </div>
+            <div onclick="refill()">
+                <img src='    https://cdn-icons-png.flaticon.com/512/10411/10411681.png '>
+                <h2>Re-Load</h2>
+            </div>
+            <div onclick="reporting()">
+                <img src='   https://cdn-icons-png.flaticon.com/512/1690/1690427.png '>
+                <h2>Reports</h2>
+            </div>
+            <div id='logout' onclick="logout()">
+                <img src='https://cdn-icons-png.flaticon.com/512/992/992680.png'>
+                <h2>Logout</h2>
+            </div>
+            
+        </section>
+        <section class='rightnav'>
+            <section class='superprogress'>
+
+                <div class='section2'>
+                    <p class='section2__text'>You have used <span class='section2__text--bold'></span> of your
+                        inventories
+                    </p>
+                    <div class='section2__progressBarContainer'>
+                        <div class='section2__progressBar'>
+                            <div class='section2__progressBarRect'>
+                                <span class='section2__progressBarCircle'></span>
+                            </div>
+                        </div>
+                        <!-- <span class='section2__progressBarPoint section2__progressBarPoint--start'>0 GB</span>
+                        <span class='section2__progressBarPoint section2__progressBarPoint--end'>5000 GB</span> -->
+                    </div>
+                    <div class='section2__storageLeft'>
+                        <span class='section2__storageLeftDigits'></span>
+                        <span class='section2__storageLeftText'>% Inventory Left</span>
+                    </div>
+                </div>
+                </div>
+            </section>
+            <p>
+                Welcome SuperAdmin
+            </p>
+            <div class='content'>
+                <section class='home' id='home'>
+                    <h1>Servers Available</h1>
+                    <h2>Dell</h2>
+                    <div class="comp">
+                        <div>
+                            <h3>R250 Rack Server<br>Demand : <span id="d_dm1">0</span></h3>
+                            <section>
+                                <p id="av_dm1">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>R750 Rack Server<br>Demand : <span id="d_dm2">0</span></h3>
+                            <section>
+                                <p id="av_dm2">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>T150 Tower Server<br>Demand : <span id="d_dm3">0</span></h3>
+                            <section>
+                                <p id="av_dm3">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>T440 Tower Server<br>Demand : <span id="d_dm4">0</span> </h3>
+                            <section>
+                                <p id="av_dm4">200</p>
+                            </section>
+                        </div>
+                    </div>
+                    <h2>Hewlett Packard</h2>
+                    <div class="comp">
+                        <div>
+                            <h3>Superdome Flex 280<br>Demand : <span id="d_hm1">0</span></h3>
+                            <section>
+                                <p id="av_hm1">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ProLiant DL320<br>Demand : <span id="d_hm2">0</span></h3>
+                            <section>
+                                <p id="av_hm2">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ProLiant DL325<br>Demand : <span id="d_hm3">0</span></h3>
+                            <section>
+                                <p id="av_hm3">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ProLiant DL360<br>Demand : <span id="d_hm4">0</span> </h3>
+                            <section>
+                                <p id="av_hm4">200</p>
+                            </section>
+                        </div>
+                    </div>
+                    <h2>Lenovo</h2>
+                    <div class="comp">
+                        <div>
+                            <h3>ThinkSystem SR650 V3<br>Demand : <span id="d_lm1">0</span></h3>
+                            <section>
+                                <p id="av_lm1">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ThinkSystem SR650<br>Demand : <span id="d_lm2">0</span></h3>
+                            <section>
+                                <p id="av_lm2">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ThinkEdge SE450<br>Demand : <span id="d_lm3">0</span></h3>
+                            <section>
+                                <p id="av_lm3">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>ThinkSystem SR850 V3<br>Demand : <span id="d_lm4">0</span> </h3>
+                            <section>
+                                <p id="av_lm4">200</p>
+                            </section>
+                        </div>
+                    </div>
+                    <h2>Oracle</h2>
+                    <div class="comp">
+                        <div>
+                            <h3>Server X9-2L<br>Demand : <span id="d_om1">0</span></h3>
+                            <section>
+                                <p id="av_om1">200</p>
+                            </section>
+                        </div>
+                        <div>
+                            <h3>SPARC T8 and SPARC M8 <br>Demand : <span id="d_om2">0</span></h3>
+                            <section>
+                                <p id="av_om2">200</p>
+                            </section>
+                        </div>
+
+                    </div>
+
+
+                </section>
+                <section class='request' id='req'>
+                    <div class='title' id='header'>
+                        <h2>NAME</h2>
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <!-- <h2>STORAGE</h2> -->
+                        <!-- <h2>HARD DISK</h2> -->
+                        <h2>DATE OF REQUEST</h2>
+                        <h2>APPROVAL</h2>
+                    </div>
+
+                </section>
+                <section class='request' id='his'>
+                    <div class='title' id='header'>
+
+                        <h2>NAME</h2>
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <!-- <h2>STORAGE</h2> -->
+                        <!-- <h2>HARD DISK</h2> -->
+                        <h2>DATE OF REQUEST</h2>
+                    </div>
+                </section>
+                <section class='request' id='den'>
+                    <div class='title' id='header'>
+                        <h2>NAME</h2>
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <!-- <h2>STORAGE</h2> -->
+                        <!-- <h2>HARD DISK</h2> -->
+                        <h2>DATE OF REQUEST</h2>
+                    </div>
+                </section>
+                <section class='request' id='pen'>
+                    <div class='title' id='header'>
+                        <h2>NAME</h2>
+                        <h2>DOMAIN</h2>
+                        <h2>MN</h2>
+                        <h2>MODEL</h2>
+                        <h2>PROCESSOR</h2>
+                        <!-- <h2>STORAGE</h2> -->
+                        <!-- <h2>HARD DISK</h2> -->
+                        <h2>DATE OF REQUEST</h2>
+                    </div>
+                </section>
+                <section class="request" id="rl">
+                    <div>
+                        <select size="1" id="selectmodel">
+                            <option value="">Select Model Number</option>
+                            <option value="1">D1 Server</option>
+                            <option value="2">D2 Server</option>
+                            <option value="3">D3 Server</option>
+                            <option value="4">D4 Server</option>
+                            <option value="5">H1 Server</option>
+                            <option value="6">H2 Server</option>
+                            <option value="7">H3 Server</option>
+                            <option value="8">H4 Server</option>
+                            <option value="9">L1 Server</option>
+                            <option value="10">L2 Server</option>
+                            <option value="11">L3 Server</option>
+                            <option value="12">L4 Server</option>
+                            <option value="13">Oracle1 Server</option>
+                            <option value="14">Oracle2 Server</option>
+                          </select><br>
+                        <input placeholder="Number of Stock" type='number' id="numberofstock"><br>
+                        <button onclick="restock()">SUBMIT</button>
+                        </div>
+                </section>
+                <section class="request" id="report">
+                    <iframe frameborder=0 width="100%"  height="720" src="https://analytics.zoho.com/open-view/2708278000000046715"></iframe>
+
+                </section>
+                <section class='request' id='use'>
+                    <div class='title' id='header'>
+                        <h2>NAME</h2>
+                        <h2>MAIL</h2>
+                        <h2>ACTION</h2>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </section>
+
+
+</body>
+<script>
+    let variable = document.getElementById('req');
+    fetch('http://localhost:8181/ServerManagement/requestAdmin')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(post => {
+                if(post.Status=="R"){
+                variable.insertAdjacentHTML('beforeend', `<div class='title' id='${post.ID}a${post.Quantity}'>
+
+                    <div><p>${post.Name}</p></div>
+                    <div><p>${post.Company}</p></div>
+                    <div>  <p>${post.ModelNo}</p></div>
+                    <div><p>${post.Model}</p></div>
+                    <div><p>${post.Processor}</p></div>
+                    <div> <p>${post.DateofRequest}</p></div>
+                    
+                    <div class='approvebutton'><button onclick="approve('${post.ID}a${post.Quantity}')";display(${post.ID})'>Approve</button><button onclick="deny('${post.ID}a${post.Quantity}')">Deny</button><button onclick="pen('${post.ID}a${post.Quantity}')"">Pending</button></div>
+                    
+                   </div>`)
+                }
+            })
+        })
+        console.log(variable);
+    let h = document.getElementById('his');
+    const xhr = new XMLHttpRequest();
+    xhr.open('get', 'http://localhost:8181/ServerManagement/requestAdmin');
+    xhr.responseType = 'json';
+    xhr.send();
+    xhr.onload = () => {
+
+        xhr.response.forEach(value => {
+            if(value.Status=="A"){
+            h.insertAdjacentHTML(
+                'beforeend', `<div class='title' id='${value.ID}'>
+                    <div><p>${value.Name}</p></div>
+                    <div><p>${value.Company}</p></div>
+                    <div>  <p>${value.ModelNo}</p></div>
+                    <div><p>${value.Model}</p></div>
+                    <div><p>${value.Processor}</p></div>
+                    <div> <p>${value.DateofRequest}</p></div>
+
+                       </div>`
+
+            )
+                    }
+        })
+    };
+
+    let us = document.getElementById('use');
+    const xh = new XMLHttpRequest();
+    xh.open('get', 'http://localhost:8181/ServerManagement/users');
+    xh.responseType = 'json';
+    xh.send();
+    xh.onload = () => {
+
+        xh.response.forEach(val => {
+            us.insertAdjacentHTML(
+                'beforeend', `<div class='title' id='${val.ID * 1.1}'>
+
+                     <div><p>${val.Name}</p></div>
+                    <div><p>${val.Mail}</p></div>
+                    <button class='blockbutton' onclick='userDelete(${val.ID * 1.1})'>BLOCK</button>
+                     
+
+                       </div>`
+
+            )
+        })
+    };
+
+    let u = document.getElementById('den');
+    const x = new XMLHttpRequest();
+    x.open('get', 'http://localhost:8181/ServerManagement/requestAdmin');
+    x.responseType = 'json';
+    x.send();
+    x.onload = () => {
+
+        x.response.forEach(va => {
+            if(va.Status=="D"){
+            u.insertAdjacentHTML(
+                'beforeend', `<div class='title' id='${va.ID}'>
+
+                    <div><p>${va.Name}</p></div>
+                    <div><p>${va.Company}</p></div>
+                    <div>  <p>${va.ModelNo}</p></div>
+                    <div><p>${va.Model}</p></div>
+                    <div><p>${va.Processor}</p></div>
+                    <div> <p>${va.DateofRequest}</p></div>
+
+                       </div>`
+
+            )
+                    }
+        })
+    };
+
+    function limit() {
+        const StorageObj = new XMLHttpRequest();
+        StorageObj.open('get', 'http://localhost:8181/ServerManagement/approvedcount');
+        StorageObj.responseType = 'json';
+        StorageObj.send();
+        StorageObj.onload = () => {
+            StorageObj.response.forEach(count => {
+
+            let a = document.querySelector('.section2__storageLeftDigits');
+            a.innerHTML = Math.trunc((280 - count.RowCount) / 280 * 100)
+            let b = document.querySelector('.section2__text--bold');
+            b.innerHTML = Math.trunc(count.RowCount / 280 * 100)
+            const keyframes = `
+  @keyframes progressLineTransmission {
+    from {
+      width: 5%;
+    }
+  
+    to {
+      width: ${Number(b.innerText)}%;
+    }
+  }
+`;
+            const styleSheet = new CSSStyleSheet();
+            styleSheet.insertRule(keyframes);
+            const element = document.querySelector('.section2__progressBarRect');
+            element.style.animation = 'progressLineTransmission 1.5s linear forwards';
+            document.adoptedStyleSheets = [styleSheet];
+})
+        }
+    }
+    limit();
+
+
+
+    function approve(inputString) {
+
+
+        const StorageObj = new XMLHttpRequest();
+        let d = document.getElementById(inputString);
+        d.style.display = "none";
+        const parts = inputString.split('a');
+const firstPart = parts[0]; // stores '7' or '123'
+const secondPart = parts[1];
+        let obj = {
+            del: Number(firstPart),
+            sp:Number(secondPart)
+        }
+        let formData = new FormData();
+        formData.append("deleteData", JSON.stringify(obj))
+        let xhr = new XMLHttpRequest;
+        xhr.open("POST", "Delete");
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("success")
+
+            }
+            else {
+                console.log("failure");
+            }
+        }
+        xhr.send(formData);
+    }
+
+    function pen(inputString) {
+
+
+const StorageObj = new XMLHttpRequest();
+let d = document.getElementById(inputString);
+d.style.display = "none";
+const parts = inputString.split('a');
+const firstPart = parts[0]; // stores '7' or '123'
+const secondPart = parts[1];
+
+
+let obj = {
+    del: Number(firstPart),
+    sp:Number(secondPart)
+
+}
+console.log(obj);
+let formData = new FormData();
+formData.append("Pending", JSON.stringify(obj))
+let xhr = new XMLHttpRequest;
+xhr.open("POST", "Pending");
+xhr.onload = () => {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log("success")
+
+    }
+    else {
+        console.log("failure");
+    }
+}
+xhr.send(formData);
+}
+
+ 
+    
+    function requestFunction() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        req.style.visibility = 'visible';
+        use.style.visibility = 'hidden';
+        home.style.visibility = "hidden";
+    }
+    function approveFunction() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'visible';
+        use.style.visibility = 'hidden';
+        home.style.visibility = "hidden";
+    }
+    function denyFunction() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'visible';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'hidden';
+        home.style.visibility = "hidden";
+        
+    }
+    function user() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'visible';
+        home.style.visibility = "hidden";
+    }
+    function home() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'hidden';
+        home.style.visibility = 'visible';
+    }
+    function pending() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="hidden";
+        pen.style.visibility='visible';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'hidden';
+        home.style.visibility = 'hidden';
+    }
+    function refill() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="hidden";
+        rl.style.visibility="visible";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'hidden';
+        home.style.visibility = 'hidden';
+    }
+    function reporting() {
+        let hh = document.getElementById('his');
+        let req = document.getElementById('req')
+        let use = document.getElementById('use')
+        let den = document.getElementById('den');
+        let home = document.getElementById("home");
+        let pen = document.getElementById("pen");
+        let rl=document.getElementById("rl");
+        let rep=document.getElementById("report");
+        rep.style.visibility="visible";
+        rl.style.visibility="hidden";
+        pen.style.visibility='hidden';
+        den.style.visibility = 'hidden';
+        req.style.visibility = 'hidden';
+        hh.style.visibility = 'hidden';
+        use.style.visibility = 'hidden';
+        home.style.visibility = 'hidden';
+    }
+    function deny(inputString) {
+        let divd = document.getElementById(inputString);
+        divd.style.display = "none";
+        const parts = inputString.split('a');
+const firstPart = parts[0]; // stores '7' or '123'
+const secondPart = parts[1];
+
+
+        let obj = {
+            del: Number(firstPart),
+            sp:Number(secondPart)
+        }
+        let formData = new FormData();
+        formData.append("DenyData", JSON.stringify(obj))
+        let xhr = new XMLHttpRequest;
+        xhr.open("POST", "Deny");
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("success")
+            }
+            else {
+                console.log("failure");
+            }
+        }
+
+        xhr.send(formData);
+    }
+    function userDelete(a) {
+        let di = document.getElementById(a);
+        di.style.display = "none";
+        let obj = {
+            del: Math.trunc(a)
+        }
+        let formData = new FormData();
+        formData.append("delRecord", JSON.stringify(obj))
+        let xhr = new XMLHttpRequest;
+        xhr.open("POST", "BlockUsers");
+        xhr.onload = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("success")
+            }
+            else {
+                console.log("failure");
+            }
+        }
+
+        xhr.send(formData);
+    }
+
+    
+
+
+    const de = new XMLHttpRequest();
+    de.open('get', 'http://localhost:8181/ServerManagement/demand');
+    de.responseType = 'json';
+    de.send();
+    de.onload = () => {
+
+        de.response.forEach(val => {
+            if (val.ModelNo == '1') {
+                document.getElementById('d_dm1').innerText = val.Count;
+            }
+            if (val.ModelNo == '2') {
+                document.getElementById('d_dm2').innerText = val.Count;
+            }
+            if (val.ModelNo == '3') {
+                document.getElementById('d_dm3').innerText = val.Count;
+            }
+            if (val.ModelNo == '4') {
+                document.getElementById('d_dm4').innerText = val.Count;
+            }
+            if (val.ModelNo == '5') {
+                document.getElementById('d_hm1').innerText = val.Count;
+            }
+            if (val.ModelNo == '6') {
+                document.getElementById('d_hm2').innerText = val.Count;
+            }
+            if (val.ModelNo == '7') {
+                document.getElementById('d_hm3').innerText = val.Count;
+            }
+            if (val.ModelNo == '8') {
+                document.getElementById('d_hm4').innerText = val.Count;
+            }
+            if (val.ModelNo == '9') {
+                document.getElementById('d_lm1').innerText = val.Count;
+            }
+            if (val.ModelNo == '10') {
+                document.getElementById('d_lm2').innerText = val.Count;
+            }
+            if (val.ModelNo == '11') {
+                document.getElementById('d_lm3').innerText = val.Count;
+            }
+            if (val.ModelNo == '12') {
+                document.getElementById('d_lm4').innerText = val.Count;
+            }
+            if (val.ModelNo == '13') {
+                document.getElementById('d_om1').innerText = val.Count;
+            }
+            if (val.ModelNo == '14') {
+                document.getElementById('d_om2').innerText = val.Count;
+            }
+        })
+    };
+
+
+
+    const re = new XMLHttpRequest();
+    re.open('get', 'http://localhost:8181/ServerManagement/remain');
+    re.responseType = 'json';
+    re.send();
+    re.onload = () => {
+
+        re.response.forEach(val => {
+            if (val.ModelNo == '1') {
+                document.getElementById('av_dm1').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '2') {
+                document.getElementById('av_dm2').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '3') {
+                document.getElementById('av_dm3').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '4') {
+                document.getElementById('av_dm4').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '5') {
+                document.getElementById('av_hm1').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '6') {
+                document.getElementById('av_hm2').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '7') {
+                document.getElementById('av_hm3').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '8') {
+                document.getElementById('av_hm4').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '9') {
+                document.getElementById('av_lm1').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '10') {
+                document.getElementById('av_lm2').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '11') {
+                document.getElementById('av_lm3').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '12') {
+                document.getElementById('av_lm4').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '13') {
+                document.getElementById('av_om1').innerText = val.Remaining;
+            }
+            if (val.ModelNo == '14') {
+                document.getElementById('av_om2').innerText = val.Remaining;
+            }
+        })
+    };
+
+    const mailingPro = new XMLHttpRequest();
+    mailingPro.open('get', 'http://localhost:8181/ServerManagement/approvedcount');
+    mailingPro.responseType = 'json';
+    mailingPro.send();
+    mailingPro.onload = () => {
+
+        mailingPro.response.forEach(val => {
+            if (val.RowCount>=200) {
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://localhost:8181/ServerManagement/mail', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText); 
+                        
+                        console.log(response);
+                    } else if (xhr.readyState === 4) {
+                       
+                        console.error(xhr.status);
+                    }
+                };
+                xhr.send();
+
+            }
+        })
+
+
+    }
+
+
+
+    let p = document.getElementById('pen');
+    const ac = new XMLHttpRequest();
+    ac.open('get', 'http://localhost:8181/ServerManagement/requestAdmin');
+    ac.responseType = 'json';
+    ac.send();
+    ac.onload = () => {
+
+        ac.response.forEach(param => {
+            if(param.Status=="P"){
+            p.insertAdjacentHTML(
+                'beforeend', `<div class='title' id='${param.ID}'>
+                    <div><p>${param.Name}</p></div>
+                    <div><p>${param.Company}</p></div>
+                    <div>  <p>${param.ModelNo}</p></div>
+                    <div><p>${param.Model}</p></div>
+                    <div><p>${param.Processor}</p></div>
+                    <div> <p>${param.DateofRequest}</p></div>
+
+                       </div>`
+
+            )
+                    }
+        })
+    };
+
+
+    let select = document.querySelector('select');
+
+select.addEventListener('focus', () => {
+  select.size = 5; 
+  select.classList.add('fadeIn'); 
+  select.classList.remove('fadeOut');
+  select.style.backgroundColor = '#FFF';
+});
+
+select.addEventListener('blur', () => {
+  select.size = 1; 
+  select.classList.add('fadeOut');
+  select.classList.remove('fadeIn');
+  select.style.backgroundColor = '#FFF';
+});
+
+select.addEventListener('change', () => {
+  select.size = 1; 
+  select.blur();
+  select.style.backgroundColor = '#FFF';
+});
+
+select.addEventListener('mouseover', () => {
+  if(select.size == 1){
+     select.style.backgroundColor = 'rgb(247, 247, 247)';
+  }
+});
+select.addEventListener('mouseout', () => {
+  if(select.size == 1){
+     select.style.backgroundColor = '#FFF';
+  }
+});
+function restock(){
+    let reid=document.getElementById("selectmodel");
+   let nos = document.getElementById("numberofstock");
+   if(reid.value<1||nos.value<1){
+    alert("Please fill the required column")
+   }
+   else {
+    let modelNo=reid.value;
+    let quantity=nos.value;
+    let obj = {
+            MN: Number(modelNo),
+            Quantity:Number(quantity)
+
+        }
+        
+        let fD = new FormData();
+        fD.append("RData", JSON.stringify(obj))
+        let xr = new XMLHttpRequest;
+        xr.open("POST", "Refilling");
+        xr.onload = () => {
+            if (xr.readyState == 4 && xr.status == 200) {
+                console.log("success")
+            }
+            else {
+                console.log("failure");
+            }
+        }
+        console.log(JSON.stringify(obj));
+        xr.send(fD);
+        
+   }
+}
+
+function logout() {
+        
+                
+                var xhr = new XMLHttpRequest();
+        xhr.open("POST", "logout", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Redirect to the landing page after logout
+                window.location.href = "landingPage.html";
+            }
+        };
+        xhr.send();
+         
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,350 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.topnav {
+    width: 100%;
+    height: 90px;
+    color: white;
+    background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+    /* padding-left: 30px;
+padding-top: 20px;
+padding-right: 50px; */
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topnav h1 {
+    margin-left: 10px;
+}
+
+.topnav div {
+    margin-right: 10px;
+}
+
+.profile {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: 1px solid white;
+
+}
+
+.dashboard {
+    display: flex;
+    height: 1000px;
+}
+
+.leftnav {
+    width: 15%;
+    height: 1100px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(to right, #141e30, #243b55) no-repeat 0 0 / cover;
+}
+
+.leftnav div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.leftnav div:hover img {
+    filter: invert(100%);
+}
+
+.leftnav div:hover h2 {
+    color: white;
+
+}
+
+.leftnav div img {
+    width: 35px;
+    height: 35px;
+    margin-left: -50px;
+    filter: invert(80%);
+}
+
+.leftnav h2 {
+    margin-left: -75px;
+    color: lightgray;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.rightnav {
+    width: 85%;
+    height: 1100px;
+    position: relative;
+    padding: 30px;
+}
+
+.rightnav p {
+    font-size: 55px;
+    margin-top: 20px;
+}
+
+.content {
+    border: 0.2px solid transparent;
+    width: 100%;
+    height: 800px;
+    border-radius: 10px;
+    margin-top: 70px;
+    background-color: rgb(240, 242, 250);
+    box-shadow: 7px 7px 20px grey;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+    /* overflow-y: auto; */
+
+    position: relative;
+}
+
+.content:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+::-webkit-scrollbar {
+    z-index: 0;
+    width: 8px;
+    border-radius: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 12px;
+    z-index: 0;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9fc0d5;
+    z-index: 0;
+    border-radius: 12px;
+    border-right: none;
+    border-left: none;
+
+    visibility: hidden;
+}
+
+.content:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+    z-index: 0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #F9F9F9;
+}
+
+#logout {
+    /* position: absolute; */
+    margin-top: 670px;
+}
+
+.request {
+    height: 800px;
+    width: 97%;
+    margin-top: 30px;
+    margin-left: 30px;
+    color: #636886;
+    position: absolute;
+}
+
+.request p {
+    margin-left: 20px;
+
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.title div {
+    width: 18%;
+    margin-left: -90px;
+    text-align: center;
+    margin-top: 13px;
+}
+
+.title p {
+    font-size: 20px;
+}
+
+.title h1 {
+    font-size: 17px;
+    margin-top: 24px;
+}
+
+
+#header {
+    background-color: #7C96AB;
+    height: 47px;
+    padding-top: 20px;
+    color: white;
+    margin-top: -33px;
+    margin-left: -35px;
+    width: 104%;
+    z-index: 10;
+
+}
+
+.approvebutton {
+
+    display: flex;
+    justify-content: space-evenly;
+
+
+}
+
+button {
+    margin-left: 80px;
+    margin-top: 12px;
+    padding: 5px;
+    height: 30px;
+}
+
+#his {
+    visibility: hidden;
+}
+
+#use {
+    visibility: hidden;
+}
+
+#den {
+    visibility: hidden;
+}
+
+.blockbutton {
+    margin-right: 50px;
+    margin-top: 25px;
+}
+
+.superprogress {
+    position: absolute;
+    right: 2%;
+}
+
+.section2 {
+    background-color: #93b0c7;
+    width: 400px;
+    height: 65px;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+
+    font-size: 20px;
+}
+
+.section2__progressBarContainer {
+    margin-top: 15px;
+    position: relative;
+}
+
+.section2__progressBar {
+    background-color: white;
+    width: 100%;
+    height: 15px;
+    padding: 2px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.section2__progressBarRect {
+    height: 100%;
+    padding: 2px;
+    margin-left: -2px;
+    border-radius: inherit;
+    animation: progressLineTransmission 2.5s 0.3s ease-in-out both;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #d3e6f1;
+}
+
+.section2__progressBarCircle {
+    background-color: #efefef;
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.section2__progressBarPoint {
+    color: white;
+    margin-top: 8px;
+    font-size: 12px;
+    position: absolute;
+}
+
+.section2__progressBarPoint--start {
+    left: 0;
+}
+
+.section2__progressBarPoint--end {
+    right: 0;
+}
+
+.section2__storageLeft {
+    background-color: #6989a1;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 8px 8px 0px;
+    height: 15px;
+    /* flex */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* position */
+    position: absolute;
+    top: 12%;
+    right: 20px;
+    transform: translateY(-70%);
+
+}
+
+.section2__storageLeft::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border: solid 20px;
+    border-color: transparent #6989a1 transparent transparent;
+
+    /* position */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translateY(50%);
+
+}
+
+.section2__storageLeftDigits {
+    color: white;
+    font-size: 32px;
+
+}
+
+.section2__storageLeftText {
+    color: white;
+    margin-left: 7px;
+    letter-spacing: 1px;
+}
+
+.section2 p {
+    font-size: 17px;
+}

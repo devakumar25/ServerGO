@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="landingPage.css">
+</head>
+
+<body>
+    <header>
+
+        <div class="logosection">
+            <img class='logo' src="SG.png">
+            <h1>ServerGO</h1>
+        </div>
+        <nav>
+            <ul>
+                <li> <a onclick="usersignin()">USER PORTAL</a></li>
+                <li> <a onclick="adminsignin()">ADMIN PORTAL</a></li>
+                <li> <a href="documentation.html">DOCUMENTATION</a></li>
+
+
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+    </header>
+
+    <!-- Section One -->
+
+    <section class="section-one">
+        <div>
+            <h2 class="header">Fast, Elite, Secure.</h2>
+            <p class="section-one-paragraph">Customizable server management plans to meet your specific needs and budget
+            </p>
+            <a href="" class="learn-more-btn">Learn More </a>
+        </div>
+        <section class="set1">
+
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form action="Hello" method="post">
+                        <h1 class="black">Create Account</h1>
+
+                        <span>or use your email for registration</span>
+                        <input type="text" placeholder="Name" name="name" class="i1" />
+                        <input type="email" placeholder="Email" name="mail" class="i2" />
+                        <input type="password" placeholder="Password" name="password" class="i3" />
+                        <button class="sign">Sign Up</button>
+                        <!-- <button class="sign" onclick="inserting()">Sign Up</button> -->
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form action="signin" method="post">
+                        <h1 class="black">Sign in</h1>
+
+                        <span>or use your account</span>
+                        <input type="email" placeholder="Email" name="mailin" />
+                        <input type="password" placeholder="Password" name="passwordin" />
+                        <!-- <a href="#">Forgot your password?</a> -->
+                        <a></a>
+                        <button class="sign">Sign In</button>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>To keep connected with us please login with your personal info</p>
+                            <button class="sign ghost" id="signIn">Sign In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Hello, Friend!</h1>
+                            <p>Enter your personal details and start journey with us</p>
+                            <button class="sign ghost" id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --------------------------------------------------------admin---------------------------------------- -->
+
+            <div class="container" id="admin">
+                <div class="form-container sign-in-container">
+                    <form action="admin" method="post">
+                        <h1 class="black">Sign in</h1>
+                        <input placeholder="Email" name="mailadmin" />
+                        <input type="password" placeholder="Password" name="passwordadmin" />
+                        <button class="sign">Sign In</button>
+                    </form>
+                </div>
+                <div class="adminwelcome">
+                    <h1>Welcome Chief !!</h1>
+                    <p>It's Great to see. To access the full range of administrative controls and manage the website
+                        with ease." </p>
+
+                </div>
+            </div>
+
+        </section>
+    </section>
+
+    <!-- Section Two -->
+    <section class="section=two">
+        <img id="employeeimg"
+            src=https://images.unsplash.com/photo-1667826385031-2b4d06d686d8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Njk2MDMyODU&ixlib=rb-4.0.3&q=80>
+    </section>
+
+    <!-- Section Three -->
+    <section class="section-three">
+        <h3>Our team of hardworking professionals delivers exceptional server management services. Contact us now </h3>
+    </section>
+
+    <!-- Section Four -->
+    <section class="section-four">
+        <div class="flex-group">
+            <div>
+                <img class="feature" src=https://media.fs.com/images/community/erp/Qhh3P_covernt6Y8.jpg>
+            </div>
+            <div class="content-container">
+                <h1>Physical Server</h1>
+                <p>Since PS are doing excellent, we had started serving PS in a massive amount in economical price.</p>
+                <a href="" class="learn-more-btn section-four-btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Five -->
+    <section class="section-five">
+        <div class="flex-group section-five-flex-group">
+            <div>
+                <img class="feature" src="https://www.racksolutions.com/news//app/uploads/AdobeStock_87909563.jpg">
+            </div>
+            <div class="content-container">
+                <h1>Security</h1>
+                <p> We don't let your trash become someone else's treasure. Security is our foremost concern.</p>
+                <a href="" class="learn-more-btn section-four-btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section six -->
+    <section class="section-six">
+        <div class="flex-group">
+            <div>
+                <img class="feature" src="https://wallpapers.com/images/featured/v9sqijtzusq0u8hc.jpg">
+            </div>
+            <div class="content-container">
+                <h1>Hardwares</h1>
+                <p>We also customize hardwares based on your needs to give you a efficient and finest server. We don't
+                    want to distrub your business in any concern.</p>
+                <a href="" class="learn-more-btn section-four-btn">What We Do</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Seven -->
+
+    <section class="section-seven">
+        <h3>We enrich human lives through the thoughtful application of server and technology<br><br><br><br>OUR SERVER
+            SOLUTIONS</h3>
+    </section>
+    <section class="footersec">
+        <div class="slider">
+            <input type="radio" name="testimonial" id="t-1">
+            <input type="radio" name="testimonial" id="t-2">
+            <input type="radio" name="testimonial" id="t-3" checked>
+            <input type="radio" name="testimonial" id="t-4">
+            <input type="radio" name="testimonial" id="t-5">
+            <div class="testimonials">
+                <label class="item" for="t-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png"
+                        alt="picture">
+                    <p>MD1200 / MD1220,MD1400 / MD1420,MD3060,MD3200 / MD3220,MD3420,MD3600 / MD3620,MD3800 / MD3820</p>
+                </label>
+                <label class="item" for="t-2">
+                    <img src="https://1000logos.net/wp-content/uploads/2017/03/Lenovo-Logo-1.png" alt="picture">
+                    <p> SR550 Thinksystem 4208 8C, SR550 4210, SR550 Thinksystem 3204 6C, ST550 - Thinksystem 4208 8C,
+                        ST550 - Thinksystem 4210 </p>
+
+                </label>
+                <label class="item" for="t-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/EMC_Corporation_logo.svg/2560px-EMC_Corporation_logo.svg.png"
+                        alt="picture">
+                    <p>VNX8000,VNX7600 / VNX7500,VNX5800 /VNX5700,VNX5600 / VNX5500,VNX5400 / VNX5300 /
+                        VNX5200,VNXe3200,VNXe3150 / VNXe3100</p>
+
+                </label>
+                <label class="item" for="t-4">
+                    <img src="https://sybyl.com/wp-content/uploads/2019/11/Oracle-Logo-For-Website.png" alt="picture">
+                    <p>x86, SPARC M8-8, SPARC T8 and T7</p>
+
+                </label>
+                <label class="item" for="t-5">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/2048px-HP_logo_2012.svg.png"
+                        alt="picture">
+                    <p>SUPERDOME FLEX, APOLLO 6500 SERVER,HPE OneView</p>
+
+                </label>
+            </div>
+            <div class="dots">
+                <label for="t-1"></label>
+                <label for="t-2"></label>
+                <label for="t-3"></label>
+                <label for="t-4"></label>
+                <label for="t-5"></label>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="inner-footer">
+
+                <!--  for company name and description -->
+                <div class="footer-items">
+                    <div class="logosection">
+                        <img class='logo' src="SG.png">
+                        <h1>ServerGO</h1>
+                    </div>
+                    <p>"Secure your servers and protect your data with our robust server management tool. Our product
+                        offers advanced security features and real-time threat detection, so you can have peace of
+                        mind."</p>
+                </div>
+
+                <!--  for quick links  -->
+                <div class="footer-items">
+                    <h3>Quick Links</h3>
+                    <div class="border1"></div> <!--for the underline -->
+                    <ul>
+                        <a href="#">
+                            <li>Home</li>
+                        </a>
+                        <a href="#">
+                            <li>Search</li>
+                        </a>
+                        <a href="#">
+                            <li>Contact</li>
+                        </a>
+                        <a href="#">
+                            <li>About</li>
+                        </a>
+                    </ul>
+                </div>
+                <!--  for some other links -->
+                <div class="footer-items">
+                    <h3>Servers</h3>
+                    <div class="border1"></div> <!--for the underline -->
+                    <ul>
+                        <a href="#">
+                            <li>Physical Server</li>
+                        </a>
+                        <a href="#">
+                            <li>Virtual Machine</li>
+                        </a>
+                        <a href="#">
+                            <li>DB Server</li>
+                        </a>
+                        <a href="#">
+                            <li>Game Server</li>
+                        </a>
+                    </ul>
+                </div>
+                <!--  for contact us info -->
+                <div class="footer-items">
+                    <h3>Contact us</h3>
+                    <div class="border1"></div>
+                    <ul>
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i>#21, Estancia, Chennai.</li>
+                        <li><i class="fa fa-phone" aria-hidden="true"></i>+91 82626 82626</li>
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i>goserver@gmail.com</li>
+                    </ul>
+                    <!--   for social links -->
+                    <div class="social-media">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-google-plus-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--   Footer Bottom start  -->
+            <div class="footer-bottom">
+                Copyright &copy; ServerGO2023
+            </div>
+        </div>
+    </section>
+    
+</body>
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () =>
+        container.classList.add('right-panel-active'));
+
+    signInButton.addEventListener('click', () =>
+        container.classList.remove('right-panel-active'));
+    function adminsignin() {
+        let adm = document.getElementById("admin");
+        let user = document.getElementById("container");
+        admin.style.display = "flex";
+        user.style.display = "none";
+    }
+    function usersignin() {
+        let adm = document.getElementById("admin");
+        let user = document.getElementById("container");
+        admin.style.display = "none";
+        user.style.display = "flex";
+    }
+    
+</script>
+
+</html>
